@@ -10,7 +10,7 @@
 ## API set
 
 ### Account
-- ####/v1/eos/account/`EOS_ACCOUNT_NAME`/info####
+- /v1/eos/account/`EOS_ACCOUNT_NAME`/info
 	- 查詢特定帳戶的基本訊息
 		- Response
 
@@ -52,7 +52,7 @@
 		}
 		```
 
-- ####/v1/eos/account/`EOS_ACCOUNT_NAME`/resouce####
+- /v1/eos/account/`EOS_ACCOUNT_NAME`/resouce
 	- 查詢特定帳戶的資源訊息
 		- Response
 
@@ -82,7 +82,7 @@
 		}
 		```
 
-- ####/v1/eos/account/`EOS_ACCOUNT_NAME`/balance####
+- /v1/eos/account/`EOS_ACCOUNT_NAME`/balance
 	- 查詢特定帳戶的餘額訊息
 		- Response
 
@@ -96,7 +96,7 @@
 		```
 
 ### Block
-- ####/v1/eos/block/`BLOCK_NUM`####
+- /v1/eos/block/`BLOCK_NUM`
 	- 查詢特定區塊內容包含區塊高度及區塊中交易的詳細訊息
 		- Response
 
@@ -174,7 +174,7 @@
 		}
 		```
 	
-- ####/v1/eos/block/latest####
+- /v1/eos/block/latest
 	- 獲取最新區塊訊息包含區塊高度及區塊中交易的詳細訊息
 		- Response
 
@@ -252,7 +252,7 @@
 		}
 		```
 
-- ####/v1/eos/block/latest_irreversible####
+- /v1/eos/block/latest_irreversible
 	- 獲取最新不可逆區塊訊息包含區塊高度及區塊中交易的詳細訊息
 		- Response
 
