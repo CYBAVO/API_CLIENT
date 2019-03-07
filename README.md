@@ -327,7 +327,7 @@
 		}
 		```
 
-- /v1/eos/block/latest_irreversible
+- /v1/eos/block/latest\_irreversible
 	- 獲取最新不可逆區塊訊息包含區塊高度及區塊中交易的詳細訊息
 		- Response
 
@@ -351,5 +351,48 @@
 		    "ref_block_prefix": 2163319660,
 		    "block_extensions": []
 		  }
+		}
+		```
+		
+- /v1/eos/proxy/chain/abi\_json\_to\_bin
+	-  把json轉換為binary
+		- Request
+		
+		``` json
+		{
+		  "code": "eosio.token",
+		  "action": "transfer",
+		  "args": {
+		    "from": "cybovatest11",
+		    "to": "cybovatest12",
+		    "quantity": "1.0000 EOS",
+		    "memo": "NOTE"
+		  }
+		}
+		```
+
+		- Response
+
+		``` json
+		{
+		  "error_code": 0,
+		  "result": {
+		    "binargs": "1042c62a9b4d8f472042c62a9b4d8f47102700000000000004454f5300000000044e4f5445"
+		  }
+		}
+		```
+		
+- /v1/eos/proxy/chain/push\_transaction
+	-  接收一簽名後的JSON格式的交易並廣播道區塊鏈上
+		-  Request
+
+		``` json
+		{
+		  "signatures": [
+		    "SIG_K1_K4gsBzrZ5dTPrK2dv1bvwttcA7aTuFFyi4X43NDPPxExLvnDxGFpkHx8tmte22sEMKgopcBYT7dvoZgVJ7HFpyQJsrZDuo"
+		  ],
+		  "compression": "none",
+		  "packed_context_free_data": "",
+		  "packed_trx": "897ef15ba927136993dd000000000100a6823403ea3055000000572d3ccdcd0190dd39e69a64a64100000000a8ed32322190dd39e69a64a641e05b3597d15cfd45640000000000000004454f530000000000000000000000000000000000000000000000000000000000000000000000000000"
 		}
 		```

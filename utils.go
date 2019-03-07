@@ -27,7 +27,7 @@ func buildSign(params []string, secretKey string, time int64) string {
 	return fmt.Sprintf("%x", sha)
 }
 
-func makeRequest(method string, api string, params []string) (string, error) {
+func makeRequest(method string, api string, params []string, postBody *string) (string, error) {
 	if method == "" || api == "" {
 		return "", errors.New("invalid parameters")
 	}
@@ -35,12 +35,22 @@ func makeRequest(method string, api string, params []string) (string, error) {
 	client := &http.Client{}
 	t := time.Now().Unix()
 	url := fmt.Sprintf("%s%s?t=%d", baseURL, api, t)
-	req, err := http.NewRequest(method, url, nil)
+
+	var req *http.Request
+	var err error
+	if postBody == nil {
+		req, err = http.NewRequest(method, url, nil)
+	} else {
+		req, err = http.NewRequest("POST", url, strings.NewReader(*postBody))
+	}
 	if err != nil {
 		return "", err
 	}
 	req.Header.Set(apiHeader, myAPICode)
 	req.Header.Set(sigHeader, buildSign(params, mySecretKey, t))
+	if postBody != nil {
+		req.Header.Set("Content-Type", "application/json")
+	}
 
 	res, err := client.Do(req)
 	if err != nil {
