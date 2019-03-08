@@ -34,7 +34,7 @@ func makeRequest(method string, api string, params []string, postBody *string) (
 
 	client := &http.Client{}
 	t := time.Now().Unix()
-	url := fmt.Sprintf("%s%s?t=%d", baseURL, api, t)
+	url := fmt.Sprintf("%s%s?ac=%s&t=%d", baseURL, api, myAPICode, t)
 
 	var req *http.Request
 	var err error
@@ -46,7 +46,6 @@ func makeRequest(method string, api string, params []string, postBody *string) (
 	if err != nil {
 		return "", err
 	}
-	req.Header.Set(apiHeader, myAPICode)
 	req.Header.Set(sigHeader, buildSign(params, mySecretKey, t))
 	if postBody != nil {
 		req.Header.Set("Content-Type", "application/json")

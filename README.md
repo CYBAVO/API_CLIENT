@@ -354,7 +354,7 @@
 		}
 		```
 		
-- /v1/eos/proxy/chain/abi\_json\_to\_bin
+- /v1/eos/abi\_json\_to\_bin
 	-  把json轉換為binary
 		- Request
 		
@@ -382,7 +382,7 @@
 		}
 		```
 		
-- /v1/eos/proxy/chain/push\_transaction
+- /v1/eos/transaction/send
 	-  接收一簽名後的JSON格式的交易並廣播道區塊鏈上
 		-  Request
 
