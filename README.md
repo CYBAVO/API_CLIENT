@@ -389,10 +389,168 @@
 		``` json
 		{
 		  "signatures": [
-		    "SIG_K1_K4gsBzrZ5dTPrK2dv1bvwttcA7aTuFFyi4X43NDPPxExLvnDxGFpkHx8tmte22sEMKgopcBYT7dvoZgVJ7HFpyQJsrZDuo"
+		    "SIG_K1_K3p94niNvkxzpMYezEzetcoFTEyowgVaX95p5K8xqEdyP2pFkcvqeVXbyMZMBWBDe73G5Dv92SLyTBxaj5yNnStALET326"
 		  ],
 		  "compression": "none",
 		  "packed_context_free_data": "",
-		  "packed_trx": "897ef15ba927136993dd000000000100a6823403ea3055000000572d3ccdcd0190dd39e69a64a64100000000a8ed32322190dd39e69a64a641e05b3597d15cfd45640000000000000004454f530000000000000000000000000000000000000000000000000000000000000000000000000000"
+		  "packed_trx": "3a2a825c437e17a06a68000000000100a6823403ea3055000000572d3ccdcd011042421a7b53315500000000a8ed3232211042421a7b5331551042746679533155e80300000000000004454f53000000000000"
+		}
+		```
+		
+		-	Response
+
+		``` json
+		{
+		  "error_code": 0,
+		  "result": {
+		    "transaction_id": "d9837444fc972a0a8af386170a83796d9c064705bf8ae51e5272768581f52822",
+		    "processed": {
+		      "id": "d9837444fc972a0a8af386170a83796d9c064705bf8ae51e5272768581f52822",
+		      "block_num": 17334041,
+		      "block_time": "2019-03-08T08:36:21.500",
+		      "producer_block_id": null,
+		      "receipt": {
+		        "status": "executed",
+		        "cpu_usage_us": 624,
+		        "net_usage_words": 16
+		      },
+		      "elapsed": 624,
+		      "net_usage": 128,
+		      "scheduled": false,
+		      "action_traces": [
+		        {
+		          "receipt": {
+		            "receiver": "eosio.token",
+		            "act_digest": "f88c491d8440b65532a1d060c417668cdfe3f32cf6d77ccada0f240c1ab20c14",
+		            "global_sequence": 227073094,
+		            "recv_sequence": 41071850,
+		            "auth_sequence": [
+		              [
+		                "eospaysucd11",
+		                10
+		              ]
+		            ],
+		            "code_sequence": 3,
+		            "abi_sequence": 2
+		          },
+		          "act": {
+		            "account": "eosio.token",
+		            "name": "transfer",
+		            "authorization": [
+		              {
+		                "actor": "eospaysucd11",
+		                "permission": "active"
+		              }
+		            ],
+		            "data": {
+		              "from": "eospaysucd11",
+		              "to": "eospayfail11",
+		              "quantity": "0.1000 EOS",
+		              "memo": ""
+		            },
+		            "hex_data": "1042421a7b5331551042746679533155e80300000000000004454f530000000000"
+		          },
+		          "context_free": false,
+		          "elapsed": 336,
+		          "console": "",
+		          "trx_id": "d9837444fc972a0a8af386170a83796d9c064705bf8ae51e5272768581f52822",
+		          "block_num": 17334041,
+		          "block_time": "2019-03-08T08:36:21.500",
+		          "producer_block_id": null,
+		          "account_ram_deltas": [],
+		          "except": null,
+		          "inline_traces": [
+		            {
+		              "receipt": {
+		                "receiver": "eospaysucd11",
+		                "act_digest": "f88c491d8440b65532a1d060c417668cdfe3f32cf6d77ccada0f240c1ab20c14",
+		                "global_sequence": 227073095,
+		                "recv_sequence": 6,
+		                "auth_sequence": [
+		                  [
+		                    "eospaysucd11",
+		                    11
+		                  ]
+		                ],
+		                "code_sequence": 3,
+		                "abi_sequence": 2
+		              },
+		              "act": {
+		                "account": "eosio.token",
+		                "name": "transfer",
+		                "authorization": [
+		                  {
+		                    "actor": "eospaysucd11",
+		                    "permission": "active"
+		                  }
+		                ],
+		                "data": {
+		                  "from": "eospaysucd11",
+		                  "to": "eospayfail11",
+		                  "quantity": "0.1000 EOS",
+		                  "memo": ""
+		                },
+		                "hex_data": "1042421a7b5331551042746679533155e80300000000000004454f530000000000"
+		              },
+		              "context_free": false,
+		              "elapsed": 15,
+		              "console": "",
+		              "trx_id": "d9837444fc972a0a8af386170a83796d9c064705bf8ae51e5272768581f52822",
+		              "block_num": 17334041,
+		              "block_time": "2019-03-08T08:36:21.500",
+		              "producer_block_id": null,
+		              "account_ram_deltas": [],
+		              "except": null,
+		              "inline_traces": []
+		            },
+		            {
+		              "receipt": {
+		                "receiver": "eospayfail11",
+		                "act_digest": "f88c491d8440b65532a1d060c417668cdfe3f32cf6d77ccada0f240c1ab20c14",
+		                "global_sequence": 227073096,
+		                "recv_sequence": 4,
+		                "auth_sequence": [
+		                  [
+		                    "eospaysucd11",
+		                    12
+		                  ]
+		                ],
+		                "code_sequence": 3,
+		                "abi_sequence": 2
+		              },
+		              "act": {
+		                "account": "eosio.token",
+		                "name": "transfer",
+		                "authorization": [
+		                  {
+		                    "actor": "eospaysucd11",
+		                    "permission": "active"
+		                  }
+		                ],
+		                "data": {
+		                  "from": "eospaysucd11",
+		                  "to": "eospayfail11",
+		                  "quantity": "0.1000 EOS",
+		                  "memo": ""
+		                },
+		                "hex_data": "1042421a7b5331551042746679533155e80300000000000004454f530000000000"
+		              },
+		              "context_free": false,
+		              "elapsed": 23,
+		              "console": "",
+		              "trx_id": "d9837444fc972a0a8af386170a83796d9c064705bf8ae51e5272768581f52822",
+		              "block_num": 17334041,
+		              "block_time": "2019-03-08T08:36:21.500",
+		              "producer_block_id": null,
+		              "account_ram_deltas": [],
+		              "except": null,
+		              "inline_traces": []
+		            }
+		          ]
+		        }
+		      ],
+		      "except": null
+		    }
+		  }
 		}
 		```
