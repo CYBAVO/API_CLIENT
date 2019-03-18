@@ -10,7 +10,7 @@
 ## API set
 
 ### Account
-- /v1/eos/account/`EOS_ACCOUNT_NAME`/info
+- **GET** /v1/eos/account/`EOS_ACCOUNT_NAME`/info
 	- 查詢特定帳戶的基本訊息
 		- Response
 
@@ -52,7 +52,7 @@
 		}
 		```
 
-- /v1/eos/account/`EOS_ACCOUNT_NAME`/resouce
+- **GET** /v1/eos/account/`EOS_ACCOUNT_NAME`/resouce
 	- 查詢特定帳戶的資源訊息
 		- Response
 
@@ -82,7 +82,7 @@
 		}
 		```
 
-- /v1/eos/account/`EOS_ACCOUNT_NAME`/balance
+- **GET** /v1/eos/account/`EOS_ACCOUNT_NAME`/balance
 	- 查詢特定帳戶的餘額訊息
 		- Response
 
@@ -96,7 +96,7 @@
 		```
 
 ### Block
-- /v1/eos/block/`BLOCK_NUM`
+- **GET** /v1/eos/block/`BLOCK_NUM`
 	- 查詢特定區塊內容包含區塊高度及區塊中交易的詳細訊息
 		- Response
 
@@ -174,7 +174,7 @@
 		}
 		```
 	
-- /v1/eos/block/latest
+- **GET** /v1/eos/block/latest
 	- 獲取最新區塊訊息包含區塊高度及區塊中交易的詳細訊息
 		- Response
 
@@ -327,7 +327,7 @@
 		}
 		```
 
-- /v1/eos/block/latest\_irreversible
+- **GET** /v1/eos/block/latest\_irreversible
 	- 獲取最新不可逆區塊訊息包含區塊高度及區塊中交易的詳細訊息
 		- Response
 
@@ -354,7 +354,7 @@
 		}
 		```
 		
-- /v1/eos/abi\_json\_to\_bin
+- **POST** /v1/eos/abi\_json\_to\_bin
 	-  把json轉換為binary
 		- Request
 		
@@ -382,7 +382,7 @@
 		}
 		```
 		
-- /v1/eos/transaction/send
+- **POST** /v1/eos/transaction/send
 	-  接收一簽名後的JSON格式的交易並廣播道區塊鏈上
 		-  Request
 
@@ -391,7 +391,7 @@
 		  "signatures": [
 		    "SIG_K1_K3p94niNvkxzpMYezEzetcoFTEyowgVaX95p5K8xqEdyP2pFkcvqeVXbyMZMBWBDe73G5Dv92SLyTBxaj5yNnStALET326"
 		  ],
-		  "compression": "none",
+		  "compression": "none",ß
 		  "packed_context_free_data": "",
 		  "packed_trx": "3a2a825c437e17a06a68000000000100a6823403ea3055000000572d3ccdcd011042421a7b53315500000000a8ed3232211042421a7b5331551042746679533155e80300000000000004454f53000000000000"
 		}
@@ -551,6 +551,703 @@
 		      ],
 		      "except": null
 		    }
+		  }
+		}
+		```
+
+# CYBABO TRON API Sample
+
+### Prerequisite
+
+- Please obtain following info from CYBAVO Team
+	- API URL 
+	- API code
+	- API secret
+
+## API set
+
+### Get Account
+- **POST** /v1/tron/wallet/getaccount
+	-  Queries information about an account. Returns the account object.
+		-  Request
+
+		``` json
+		{
+		  "address": "4170622A5F83CF2A5DE36433AD4F6CDEF078B01F05"
+		}
+		```
+		
+		-	Response
+
+		``` json
+		{
+		  "address": "4170622a5f83cf2a5de36433ad4f6cdef078b01f05",
+		  "balance": 166600000,
+		  "create_time": 1551773187000,
+		  "account_resource": {},
+		  "assetV2": [
+		    {
+		      "key": "1000217",
+		      "value": 15229
+		    }
+		  ],
+		  "free_asset_net_usageV2": [
+		    {
+		      "key": "1000217",
+		      "value": 0
+		    }
+		  ]
+		}
+		```
+		
+### Account Bandwidth Information
+- **POST** /v1/tron/wallet/getaccountnet
+	- Returns bandwith information for the account. If a field doesn't appear, then the corresponding value is 0.
+		-  Request
+
+		``` json
+		{
+		  "address": "4170622A5F83CF2A5DE36433AD4F6CDEF078B01F05"
+		}
+		```
+		
+		-	Response
+
+		``` json
+		{
+		  "freeNetLimit": 5000,
+		  "assetNetUsed": [
+		    {
+		      "key": "1000217",
+		      "value": 0
+		    }
+		  ],
+		  "assetNetLimit": [
+		    {
+		      "key": "1000217",
+		      "value": 0
+		    }
+		  ],
+		  "TotalNetLimit": 43200000000,
+		  "TotalNetWeight": 59143027
+		}
+		```
+
+### Block by Block Height
+-	**POST** /v1/tron/wallet/getblockbynum
+	-	Returns the Block Object corresponding to the 'Block Height' specified (number of blocks preceding it).
+		- Request
+
+		``` json
+		{
+		  "num": 200
+		}
+		```
+		
+		-	Response
+
+		``` json
+		{
+		  "blockID": "00000000000000c83ad3d3759a57db65c945053a0351bd044e3cb46dd939ecfd",
+		  "block_header": {
+		    "raw_data": {
+		      "number": 200,
+		      "txTrieRoot": "0000000000000000000000000000000000000000000000000000000000000000",
+		      "witness_address": "41928c9af0651632157ef27a2cf17ca72c575a4d21",
+		      "parentHash": "00000000000000c7d54cdd476da9f19493bfffe62757c9deee1b87342b898ea6",
+		      "version": 6,
+		      "timestamp": 1545846339000
+		    },
+		    "witness_signature": "68282eb82010fd38d4582da747764cd110a32c0a083bcadf0c0968ceb59a6711202ae3187d47c94f8535faba1f2e232c1b455f12b4101b91dacb40410806fef600"
+		  }
+		}
+		```
+		
+### Block by ID
+-	**POST** /v1/tron/wallet/getblockbyid
+	-	Query block by ID.
+		- Request
+
+		``` json
+		{
+		  "value": "00000000000000c83ad3d3759a57db65c945053a0351bd044e3cb46dd939ecfd"
+		}
+		```
+		
+		-	Response
+
+		``` json
+		{
+		  "blockID": "00000000000000c83ad3d3759a57db65c945053a0351bd044e3cb46dd939ecfd",
+		  "block_header": {
+		    "raw_data": {
+		      "number": 200,
+		      "txTrieRoot": "0000000000000000000000000000000000000000000000000000000000000000",
+		      "witness_address": "41928c9af0651632157ef27a2cf17ca72c575a4d21",
+		      "parentHash": "00000000000000c7d54cdd476da9f19493bfffe62757c9deee1b87342b898ea6",
+		      "version": 6,
+		      "timestamp": 1545846339000
+		    },
+		    "witness_signature": "68282eb82010fd38d4582da747764cd110a32c0a083bcadf0c0968ceb59a6711202ae3187d47c94f8535faba1f2e232c1b455f12b4101b91dacb40410806fef600"
+		  }
+		}
+		```
+		
+### Block by Latest Number
+-	**POST** /v1/tron/wallet/getblockbylatestnum
+	-	Returns a list of block objects.
+		- Request
+
+		``` json
+		{
+		  "num": 1
+		}
+		```
+		
+		-	Response
+
+		``` json
+		{
+		  "block": [
+		    {
+		      "transactions": [
+		        {
+		          "raw_data": {
+		            "ref_block_bytes": "d84e",
+		            "ref_block_hash": "7fd027891175b96d",
+		            "expiration": 1552896195000,
+		            "contract": [
+		              {
+		                "type": "TriggerSmartContract",
+		                "parameter": {
+		                  "type_url": "type.googleapis.com/protocol.TriggerSmartContract",
+		                  "value": "0a1541b9c2acd1dec60585e7894d63583dc41eef0c200312154134d03d7bd0b9bbd9bc742907bb52330ac1537acb22c402222bb7700000000000000000000000008ee29b4cf98777231756f3f50a545435a5055d1a00000000000000000000000000000000000000000000000000000000000000310000000000000000000000000000000000000000000000000000000000000080000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000000582f477a564c4b48692b4a47526e584d35473764514c4d426b5332655731777059644b4c79424a464f6e3352767167582b615634356c3634715367494270456448636c686246707641507648596b6668715672494461513d3d0000000000000000000000000000000000000000000000000000000000000000000000000000001c774b6e7870756179476d3354725a713679366b72367357736b53493d00000000"
+		                }
+		              }
+		            ],
+		            "timestamp": 1552896137306,
+		            "fee_limit": 10000000
+		          },
+		          "signature": [
+		            "51f7cd434c01ec6f87ca84d5eafccda815222d55ec5cb006e4f697c91fddc4e29c75d3ce95ca4fc5a6b41dd19507628e6272b6567365ab0bb488f20b4658e05700"
+		          ],
+		          "ret": [
+		            {
+		              "contractRet": "SUCCESS"
+		            }
+		          ]
+		        },
+		        {
+		          "raw_data": {
+		            "ref_block_bytes": "d84e",
+		            "ref_block_hash": "7fd027891175b96d",
+		            "expiration": 1552896195000,
+		            "contract": [
+		              {
+		                "type": "TriggerSmartContract",
+		                "parameter": {
+		                  "type_url": "type.googleapis.com/protocol.TriggerSmartContract",
+		                  "value": "0a154128d7f83009d3c6e26452b4cb1eef8dd931bc45d3121541e703ff48dbc60e41ef456ce5bd14d006213cb41d222420a98f6a000000000000000000000000000000000000000000000000000000005c8f508a"
+		                }
+		              }
+		            ],
+		            "timestamp": 1552896137939,
+		            "fee_limit": 100000000
+		          },
+		          "signature": [
+		            "0c36fee0583e6e39e3952f822e7631d60d8b3fa756310873d03ea89fbe7036c394e68cee974f63cae3225cc5891fff08c1e2ffa562320b22c02bb5bab09a09d000"
+		          ],
+		          "ret": [
+		            {
+		              "contractRet": "SUCCESS"
+		            }
+		          ]
+		        },
+		        {
+		          "raw_data": {
+		            "ref_block_bytes": "d84e",
+		            "ref_block_hash": "7fd027891175b96d",
+		            "expiration": 1552896195000,
+		            "contract": [
+		              {
+		                "type": "TriggerSmartContract",
+		                "parameter": {
+		                  "type_url": "type.googleapis.com/protocol.TriggerSmartContract",
+		                  "value": "0a1541d4025baca63d92e7bcf0b6ba34a14a65e28dc98b1215410d89b5bf6ea312dbc343e528900683b36975ed611880c2d72f2224359382580000000000000000000000000000000000000000000000000000000000000032"
+		                }
+		              }
+		            ],
+		            "timestamp": 1552896137933,
+		            "fee_limit": 1000000000
+		          },
+		          "signature": [
+		            "6ade644568d836089558b231827594ceb99e822bef9be27bfd9c790a442c2246c6b33cda7df991023066ab030fe02f2c620ca2bcc7f5d018dca02f2d7174770301"
+		          ],
+		          "ret": [
+		            {
+		              "contractRet": "SUCCESS"
+		            }
+		          ]
+		        }
+		      ],
+		      "block_header": {
+		        "raw_data": {
+		          "timestamp": 1552896141000,
+		          "txTrieRoot": "bcf977834904cff2249c8584e8e1f2ca1bd92f9d24e6e6782cab162ba8ed3bc2",
+		          "parentHash": "000000000023d84f851ffb9d3139bd7cc259bf3b5a5953ace06f3ec46110d947",
+		          "number": 2349136,
+		          "witness_address": "41928c9af0651632157ef27a2cf17ca72c575a4d21",
+		          "version": 7
+		        },
+		        "witness_signature": "65c253b94972c4b3c4da684fd28df3f85e0d21f2695e7250906a15fb1dce72fb2f51a99e30150f4e948b66eb84097c01a5f35048893a7b56e00146a04248271700"
+		      }
+		    }
+		  ]
+		}
+		```
+		
+### Block by Limit Next
+-	**POST** /v1/tron/wallet/getblockbylatestnum
+	-	Returns the list of Block Objects included in the 'Block Height' range specified.
+		-	Request
+
+		``` json
+		{
+		  "startNum": 1,
+		  "endNum": 2
+		}
+		```
+		
+		-	Response
+		
+		``` json
+		{
+		  "block": [
+		    {
+		      "block_header": {
+		        "raw_data": {
+		          "timestamp": 1545845736000,
+		          "txTrieRoot": "0000000000000000000000000000000000000000000000000000000000000000",
+		          "parentHash": "000000000000000057945fc39376c3665d26a8743fc4c5c14f0fc7d8b00da8dd",
+		          "number": 1,
+		          "witness_address": "41928c9af0651632157ef27a2cf17ca72c575a4d21",
+		          "version": 6
+		        },
+		        "witness_signature": "d69e24e843c03f0e549a33aeef65ecd55a3ac0aa9c37ec480a7a92e1e29bdcd025fbc4564cf5f95feae0aff3043c2e636eae5d72d66c0c12992ef55dc4c4a00901"
+		      }
+		    }
+		  ]
+		}
+		```
+		
+### Get Latest Block
+-	**POST** /v1/tron/wallet/getnowblock
+	-	Query the latest block synced to the Full Node.
+		-	Request
+
+		``` json
+		{
+		  "req": "nowblock"
+		}
+		```
+		
+		-	Response
+		
+		``` json
+		{
+		  "blockID": "000000000023daf6aee54b4d88041fd9542d63119aaab95f79884fccd33c1985",
+		  "block_header": {
+		    "raw_data": {
+		      "number": 2349814,
+		      "txTrieRoot": "ce64fdf1e301de76c6b6d02ef3c4083bd20d42c02a687c9965994bb5fbaca2f2",
+		      "witness_address": "41928c9af0651632157ef27a2cf17ca72c575a4d21",
+		      "parentHash": "000000000023daf5158dea1b61cd1cec4551c9356887fdfd1b45cb0422e5de88",
+		      "version": 7,
+		      "timestamp": 1552898175000
+		    },
+		    "witness_signature": "718b6fbc6dbee6a6021dedfc37562c4030c1a7f75db71fe6524088243d500238088a90dfeac472a2e884870457c9fcd762525b36e82d26e19bc1283e0597057700"
+		  },
+		  "transactions": [
+		    {
+		      "ret": [
+		        {
+		          "contractRet": "SUCCESS"
+		        }
+		      ],
+		      "signature": [
+		        "c4d6c0fc5335da1a7665db99d794ec1938266e7f0cd8539ac8e0f9af49fbcd95d86c1e691c5f65b6a3449d6af4b397a21e60bebc2c2f271f7738996c72425cb300"
+		      ],
+		      "txID": "a37492f18bacd8a4d58106efa3ddef1e1f97db172f86b4b3cd541b3e839022e7",
+		      "raw_data": {
+		        "contract": [
+		          {
+		            "parameter": {
+		              "value": {
+		                "data": "20a98f6a000000000000000000000000000000000000000000000000000000005c8f587d",
+		                "owner_address": "4128d7f83009d3c6e26452b4cb1eef8dd931bc45d3",
+		                "contract_address": "41e703ff48dbc60e41ef456ce5bd14d006213cb41d"
+		              },
+		              "type_url": "type.googleapis.com/protocol.TriggerSmartContract"
+		            },
+		            "type": "TriggerSmartContract"
+		          }
+		        ],
+		        "ref_block_bytes": "daf5",
+		        "ref_block_hash": "158dea1b61cd1cec",
+		        "expiration": 1552898232000,
+		        "fee_limit": 100000000,
+		        "timestamp": 1552898173012
+		      },
+		      "raw_data_hex": "0a02daf52208158dea1b61cd1cec40c09dcaff982d5a8e01081f1289010a31747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e54726967676572536d617274436f6e747261637412540a154128d7f83009d3c6e26452b4cb1eef8dd931bc45d3121541e703ff48dbc60e41ef456ce5bd14d006213cb41d222420a98f6a000000000000000000000000000000000000000000000000000000005c8f587d70d4d0c6ff982d900180c2d72f"
+		    },
+		    {
+		      "ret": [
+		        {
+		          "contractRet": "SUCCESS"
+		        }
+		      ],
+		      "signature": [
+		        "22beafa5494def53e1bc5d295528021bdfc6aa6f253c2400fb04cc820e05c7481c68b14b9482fe12918d40d86b2d1a4fdf3cb32b47ae475f1a9e0c532c6a502900"
+		      ],
+		      "txID": "4e4ef3c3c9ca240778cabd917bbbad75e6c8c59e1375b817a92c323229bdd8c4",
+		      "raw_data": {
+		        "contract": [
+		          {
+		            "parameter": {
+		              "value": {
+		                "data": "359382580000000000000000000000000000000000000000000000000000000000000032",
+		                "owner_address": "41d4025baca63d92e7bcf0b6ba34a14a65e28dc98b",
+		                "contract_address": "410d89b5bf6ea312dbc343e528900683b36975ed61",
+		                "call_value": 100000000
+		              },
+		              "type_url": "type.googleapis.com/protocol.TriggerSmartContract"
+		            },
+		            "type": "TriggerSmartContract"
+		          }
+		        ],
+		        "ref_block_bytes": "daf5",
+		        "ref_block_hash": "158dea1b61cd1cec",
+		        "expiration": 1552898232000,
+		        "fee_limit": 1000000000,
+		        "timestamp": 1552898173386
+		      },
+		      "raw_data_hex": "0a02daf52208158dea1b61cd1cec40c09dcaff982d5a9301081f128e010a31747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e54726967676572536d617274436f6e747261637412590a1541d4025baca63d92e7bcf0b6ba34a14a65e28dc98b1215410d89b5bf6ea312dbc343e528900683b36975ed611880c2d72f222435938258000000000000000000000000000000000000000000000000000000000000003270cad3c6ff982d90018094ebdc03"
+		    },
+		    {
+		      "ret": [
+		        {
+		          "contractRet": "SUCCESS"
+		        }
+		      ],
+		      "signature": [
+		        "6be055b73af61585a2ceccf7a07b59b7a69078dd7aadbf75d262e10195bbd4a87f87753bedad360a0f8422cb2d84870a72c1f14e18a7b7cc42a0e167ad50a86c00"
+		      ],
+		      "txID": "5cb538863680450508fdf6b8c0fde5ed99ddb43a1349b16b7c8fd8eb6c551aa0",
+		      "raw_data": {
+		        "contract": [
+		          {
+		            "parameter": {
+		              "value": {
+		                "data": "bb1086c10000000000000000000000000000000000000000000000000000000000000000",
+		                "owner_address": "41d19cd0057df24d00df8f4bd23fcdda1b9ad018dd",
+		                "contract_address": "41fd896be2b82a224118266ad6f073ffdf13dba238"
+		              },
+		              "type_url": "type.googleapis.com/protocol.TriggerSmartContract"
+		            },
+		            "type": "TriggerSmartContract"
+		          }
+		        ],
+		        "ref_block_bytes": "daf5",
+		        "ref_block_hash": "158dea1b61cd1cec",
+		        "expiration": 1552898232000,
+		        "fee_limit": 1000000000,
+		        "timestamp": 1552898173289
+		      },
+		      "raw_data_hex": "0a02daf52208158dea1b61cd1cec40c09dcaff982d5a8e01081f1289010a31747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e54726967676572536d617274436f6e747261637412540a1541d19cd0057df24d00df8f4bd23fcdda1b9ad018dd121541fd896be2b82a224118266ad6f073ffdf13dba2382224bb1086c1000000000000000000000000000000000000000000000000000000000000000070e9d2c6ff982d90018094ebdc03"
+		    }
+		  ]
+		}
+		```
+		
+### Broadcast Transaction
+-	**POST** /v1/tron/wallet/broadcasttransaction
+	-	Returns broadcast success or failure status.
+		- Request
+
+		``` json
+		{
+		  "raw_data": {
+		    "ref_block_bytes": "e6dc",
+		    "ref_block_hash": "cb95b9e4914854cc",
+		    "expiration": 1552908215000,
+		    "timestamp": 1552907315000,
+		    "contract": [
+		      {
+		        "type": "TransferContract",
+		        "parameter": {
+		          "value": {
+		            "amount": 50000000,
+		            "owner_address": "412a00fc3f6068ed005d3d00b30609ddb79c26e213",
+		            "to_address": "412be614e143e40979efd18b47cfe089c2ba5906f1"
+		          },
+		          "type_url": "type.googleapis.com/protocol.TransferContract"
+		        }
+		      }
+		    ]
+		  },
+		  "signature": [
+		    "edaa7bd24c09431ff423194f60730e421e5e207f747a8c1c738e370d2b779bf12677a3dc34b98afb6bc997d0b53175a4ac945dd7a571ec07138d243532840d4200"
+		  ],
+		  "txID": "1d3e4cfa27460a0b0ba3e3a8eaae61b8786979fef2cdbeea0df550fb60369e9d"
+		}
+		```
+		
+		-	Response
+		
+		``` json
+		{
+		  "result": true
+		}
+		```
+		
+### Validate Address
+-	**POST** /v1/tron/wallet/validateaddress
+	-	Validates address, returns either true or false.
+		- Request
+
+		``` json
+		{
+		  "address": "4170622A5F83CF2A5DE36433AD4F6CDEF078B01F05"
+		}
+		```
+		
+		-	Response
+		
+		``` json
+		{
+		  "result": true,
+		  "message": "Hex string format"
+		}
+		```
+		
+### Transactions by ID
+-	**POST** /v1/tron/wallet/gettransactionbyid
+	-	Query transaction by ID.
+		- Request
+
+		``` json
+		{
+		  "value": "d0807adb3c5412aa150787b944c96ee898c997debdc27e2f6a643c771edb5933"
+		}
+		```
+		
+		-	Response
+		
+		``` json
+		{
+		  "id": "9af66ca310ffb0f450c36128be690a65dc947eaeef424bb1512ad7b4e5958044",
+		  "fee": 710890,
+		  "blockNumber": 2349977,
+		  "blockTimeStamp": 1552898664000,
+		  "contractResult": [
+		    "0000000000000000000000000000000000000000000000000000000005defda0000000000000000000000000000000000000000000000000000000000000001a"
+		  ],
+		  "contract_address": "414d45db4d4e8e04f61cc73c2d3f41a1a7c9f50eae",
+		  "receipt": {
+		    "energy_fee": 707700,
+		    "energy_usage_total": 70770,
+		    "net_fee": 3190,
+		    "result": "SUCCESS"
+		  },
+		  "log": [
+		    {
+		      "address": "4d45db4d4e8e04f61cc73c2d3f41a1a7c9f50eae",
+		      "topics": [
+		        "38498a37f911dcd45d3d0295f0ea4b117b4b2a1e3ecdc63bbc375e89f5366db7"
+		      ],
+		      "data": "0000000000000000000000000000000000000000000000000000000647aed498"
+		    },
+		    {
+		      "address": "da84ca64e26fbaa0f756b23d36f0d1644e021708",
+		      "topics": [
+		        "0810ac8bfe739ca026451fbb5bdee58a52bdf5f8fb9aa321f52154e1481d06c7"
+		      ],
+		      "data": "000000000000000000000000a12ae80eeb9d006a64e95dd13df1dff76f7f4fc900000000000000000000000000000000000000000000000000000000000186a0000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000738e2eac"
+		    },
+		    {
+		      "address": "4d45db4d4e8e04f61cc73c2d3f41a1a7c9f50eae",
+		      "topics": [
+		        "e12d3a32e6efaf849a91ed7bbc5989d84662b78f949219c4b69cf35175dbb8b1",
+		        "0000000000000000000000000000000000000000000000000000000000000002"
+		      ],
+		      "data": "000000000000000000000000a12ae80eeb9d006a64e95dd13df1dff76f7f4fc9000000000000000000000000000000000000000000000000000000000000001a0000000000000000000000000000000000000000000000000000000000000032000000000000000000000000000000000000000000000000000000761d8694600000000000000000000000000000000000000000000000000000000005defda00000000000000000000000000000000000000000000000000000000002faf080"
+		    }
+		  ],
+		  "internal_transactions": [
+		    {
+		      "hash": "da0588c6f39cbed2f65d810203b360f9ee1c6579b48b254ddaf78d0a719d7995",
+		      "caller_address": "414d45db4d4e8e04f61cc73c2d3f41a1a7c9f50eae",
+		      "transferTo_address": "41a12ae80eeb9d006a64e95dd13df1dff76f7f4fc9",
+		      "callValueInfo": [
+		        {
+		          "callValue": 98500000
+		        }
+		      ],
+		      "note": "63616c6c"
+		    },
+		    {
+		      "hash": "be9c846156578536e7edede85810f072baa9e9517db04ec6314cb09f1b5cbac7",
+		      "caller_address": "414d45db4d4e8e04f61cc73c2d3f41a1a7c9f50eae",
+		      "transferTo_address": "41b3a1c3eb13837618249c16a5f300210aec7c4fa7",
+		      "callValueInfo": [
+		        {}
+		      ],
+		      "note": "63616c6c"
+		    },
+		    {
+		      "hash": "40efc28bf57c6df16ebacd00194b2bee27680158cf712e438447db7ae50e3f42",
+		      "caller_address": "414d45db4d4e8e04f61cc73c2d3f41a1a7c9f50eae",
+		      "transferTo_address": "41de15a33d662153c69e4a2844f91437834f1f0496",
+		      "callValueInfo": [
+		        {}
+		      ],
+		      "note": "63616c6c"
+		    },
+		    {
+		      "hash": "741e414373ba9c108485e4d288a1d98461bc2879adafa66d5f59ae68373696cc",
+		      "caller_address": "41de15a33d662153c69e4a2844f91437834f1f0496",
+		      "transferTo_address": "41da84ca64e26fbaa0f756b23d36f0d1644e021708",
+		      "callValueInfo": [
+		        {}
+		      ],
+		      "note": "63616c6c"
+		    },
+		    {
+		      "hash": "8127b690804be49f46f678154157182a48008cd230cf8ead731240973ef28336",
+		      "caller_address": "41de15a33d662153c69e4a2844f91437834f1f0496",
+		      "transferTo_address": "41a09d5fd5fb19cfcc6f24972c4aa0f46da3c5f6d6",
+		      "callValueInfo": [
+		        {}
+		      ],
+		      "note": "63616c6c"
+		    }
+		  ]
+		}
+		```
+		
+### Transaction Info by ID
+-	**POST** /v1/tron/wallet/gettransactioninfobyid
+	-	Query transaction info by ID.
+		- Request
+
+		``` json
+		{
+		  "value": "d0807adb3c5412aa150787b944c96ee898c997debdc27e2f6a643c771edb5933"
+		}
+		```
+		
+		-	Response
+		
+		``` json
+		{
+		  "ret": [
+		    {
+		      "contractRet": "SUCCESS"
+		    }
+		  ],
+		  "signature": [
+		    "d273cb2238702927a41e2858b3ff31bf598ac307968dc211e9928bd91f53acf9c76eec211bea0c084dfdf17bac6678d6a1e3da043599de7c746e0d93f5d89f4f00"
+		  ],
+		  "txID": "9af66ca310ffb0f450c36128be690a65dc947eaeef424bb1512ad7b4e5958044",
+		  "raw_data": {
+		    "contract": [
+		      {
+		        "parameter": {
+		          "value": {
+		            "data": "53a04b050000000000000000000000000000000000000000000000000000000000000032",
+		            "owner_address": "41a12ae80eeb9d006a64e95dd13df1dff76f7f4fc9",
+		            "contract_address": "414d45db4d4e8e04f61cc73c2d3f41a1a7c9f50eae",
+		            "call_value": 50000000
+		          },
+		          "type_url": "type.googleapis.com/protocol.TriggerSmartContract"
+		        },
+		        "type": "TriggerSmartContract"
+		      }
+		    ],
+		    "ref_block_bytes": "db98",
+		    "ref_block_hash": "21b5048fa06f8b60",
+		    "expiration": 1552898721000,
+		    "fee_limit": 1000000000,
+		    "timestamp": 1552898661862
+		  },
+		  "raw_data_hex": "0a02db98220821b5048fa06f8b6040e889e8ff982d5a9301081f128e010a31747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e54726967676572536d617274436f6e747261637412590a1541a12ae80eeb9d006a64e95dd13df1dff76f7f4fc91215414d45db4d4e8e04f61cc73c2d3f41a1a7c9f50eae1880e1eb17222453a04b05000000000000000000000000000000000000000000000000000000000000003270e6bbe4ff982d90018094ebdc03"
+		}
+		```
+		
+
+### Get Contract
+-	**POST** /v1/tron/wallet/getcontract
+	-	Queries a contract's information from the blockchain. Returns SmartContract object.
+		- Request
+
+		``` json
+		{
+		  "value": "41909C9BFAB86CBF89B1A4D1488744111637719B14"
+		}
+		```
+		
+### Trigger Smart Contract
+-	**POST** /v1/tron/wallet/triggersmartcontract
+	-	Returns TransactionExtention, which contains the unsigned Transaction.
+		- Request
+
+		``` json
+		{
+		  "contract_address": "4189139CB1387AF85E3D24E212A008AC974967E561",
+		  "function_selector": "set(uint256,uint256)",
+		  "parameter": "00000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000002",
+		  "fee_limit": 1000000,
+		  "call_value": 100,
+		  "owner_address": "41D1E7A6BC354106CB410E65FF8B181C600FF14292"
+		}
+		```
+		
+		-	Response
+
+		``` json
+		{
+		  "result": {
+		    "result": true
+		  },
+		  "constant_result": [
+		    "0000000000000000000000000000000000000000000000000000000041e4ddb6"
+		  ],
+		  "transaction": {
+		    "ret": [
+		      {}
+		    ],
+		    "txID": "454246733416b780411e5c59618264e3a881e5eee5858894f3a625a8342a6ea7",
+		    "raw_data": {
+		      "contract": [
+		        {
+		          "parameter": {
+		            "value": {
+		              "data": "70a08231000000000000000000000000c12fb0805f3ba3ca3a01d258a887dd3e4db731a6",
+		              "owner_address": "41c12fb0805f3ba3ca3a01d258a887dd3e4db731a6",
+		              "contract_address": "414b9223269e1c53b6b72745e3332623c21e70b805"
+		            },
+		            "type_url": "type.googleapis.com/protocol.TriggerSmartContract"
+		          },
+		          "type": "TriggerSmartContract"
+		        }
+		      ],
+		      "ref_block_bytes": "e765",
+		      "ref_block_hash": "62c12bc2214f8603",
+		      "expiration": 1552907784000,
+		      "fee_limit": 1000000,
+		      "timestamp": 1552907726027
+		    },
+		    "raw_data_hex": "0a02e765220862c12bc2214f860340c09e9184992d5a8e01081f1289010a31747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e54726967676572536d617274436f6e747261637412540a1541c12fb0805f3ba3ca3a01d258a887dd3e4db731a61215414b9223269e1c53b6b72745e3332623c21e70b805222470a08231000000000000000000000000c12fb0805f3ba3ca3a01d258a887dd3e4db731a670cbd98d84992d9001c0843d"
 		  }
 		}
 		```
