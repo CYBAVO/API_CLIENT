@@ -1,14 +1,16 @@
-# CYBABO EOS API Sample
+# Supportted Currencies
+* [EOS](#CYBABO-EOS-API-Sample)
+* [TRON](#CYBABO-TRON-API-Sample)
+* [Litecoin](#CYBABO-Litecoin-API-Sample)
 
-### Prerequisite
+# Prerequisite
 
 - Please obtain following info from CYBAVO Team
 	- API URL 
 	- API code
 	- API secret
-
-## API set
-
+---------------------------------------
+# CYBABO EOS API Sample
 ### Account
 - **GET** /v1/eos/account/`EOS_ACCOUNT_NAME`/info
 	- 查詢特定帳戶的基本訊息
@@ -554,18 +556,8 @@
 		  }
 		}
 		```
-
+---------------------------------------
 # CYBABO TRON API Sample
-
-### Prerequisite
-
-- Please obtain following info from CYBAVO Team
-	- API URL 
-	- API code
-	- API secret
-
-## API set
-
 ### Get Account
 - **POST** /v1/tron/wallet/getaccount
 	-  Queries information about an account. Returns the account object.
@@ -1251,17 +1243,8 @@
 		  }
 		}
 		```
-
+---------------------------------------
 # CYBABO Litecoin API Sample
-
-### Prerequisite
-
-- Please obtain following info from CYBAVO Team
-	- API URL 
-	- API code
-	- API secret
-
-## API set
 ### Transaction
 - **GET** /v1/ltc/fee
 	- 查詢建議交易費
