@@ -1,9 +1,18 @@
-# Supportted Currencies
+# CYBABO Ledger Service
+## Supportted Currencies
 * [EOS](#CYBABO-EOS-API-Sample)
+    * Query basic information of the specific account [[go]](#Query-basic-information-of-the-specific-account) 
+    * Query resource data of the specific account [[go]](#Query-resource-data-of-the-specific-account)
+    * Query balance of the specific account [[go]](#Query-balance-of-the-specific-account)
+    * Query detailed information of transactions in the specific block and block height [[go]](#Query-detailed-information-of-transactions-in-the-specific-block-and-block-height)
+    * Query detailed information of transactions in the latest block and block height [[go]] (#Query-detailed-information-of-transactions-in-the-latest-block-and-block-height)
+    * Query detailed information of transactions in the latest irreversible block and block height [[go]](Query-detailed-information-of-transactions-in-the-latest-irreversible-block-and-block-height)
+    * Convert json to binary [[go]](#Convert-json-to-binary)
+    * Receive the signed JSON transaction and broadcast it to blockchain [[go]](#Receive-the-signed-JSON-transaction-and-broadcast-it-to-blockchain)
 * [TRON](#CYBABO-TRON-API-Sample)
 * [Litecoin](#CYBABO-Litecoin-API-Sample)
 
-# Prerequisite
+## Prerequisite
 
 - Please obtain following info from CYBAVO Team
 	- API URL 
@@ -12,8 +21,9 @@
 ---------------------------------------
 # CYBABO EOS API Sample
 ### Account
+
+#### Query basic information of the specific account 
 - **GET** /v1/eos/account/`EOS_ACCOUNT_NAME`/info
-	- 查詢特定帳戶的基本訊息
 		- Response
 
 		``` json
@@ -54,9 +64,9 @@
 		}
 		```
 
+#### Query resource data of the specific account
 - **GET** /v1/eos/account/`EOS_ACCOUNT_NAME`/resouce
-	- 查詢特定帳戶的資源訊息
-		- Response
+	    - Response
 
 		``` json
 		{
@@ -84,8 +94,8 @@
 		}
 		```
 
+#### Query balance of the specific account
 - **GET** /v1/eos/account/`EOS_ACCOUNT_NAME`/balance
-	- 查詢特定帳戶的餘額訊息
 		- Response
 
 		``` json
@@ -98,8 +108,8 @@
 		```
 
 ### Block
+#### Query detailed information of transactions in the specific block and block height
 - **GET** /v1/eos/block/`BLOCK_NUM`
-	- 查詢特定區塊內容包含區塊高度及區塊中交易的詳細訊息
 		- Response
 
 		``` json
@@ -175,9 +185,9 @@
 		  }
 		}
 		```
-	
+
+#### Query detailed information of transactions in the latest block and block height
 - **GET** /v1/eos/block/latest
-	- 獲取最新區塊訊息包含區塊高度及區塊中交易的詳細訊息
 		- Response
 
 		``` json
@@ -329,8 +339,8 @@
 		}
 		```
 
+#### Query detailed information of transactions in the latest irreversible block and block height
 - **GET** /v1/eos/block/latest\_irreversible
-	- 獲取最新不可逆區塊訊息包含區塊高度及區塊中交易的詳細訊息
 		- Response
 
 		``` json
@@ -355,9 +365,8 @@
 		  }
 		}
 		```
-		
+#### Convert json to binary
 - **POST** /v1/eos/abi\_json\_to\_bin
-	-  把json轉換為binary
 		- Request
 		
 		``` json
@@ -384,8 +393,8 @@
 		}
 		```
 		
+#### Receive the signed JSON transaction and broadcast it to blockchain
 - **POST** /v1/eos/transaction/send
-	-  接收一簽名後的JSON格式的交易並廣播道區塊鏈上
 		-  Request
 
 		``` json
@@ -393,7 +402,7 @@
 		  "signatures": [
 		    "SIG_K1_K3p94niNvkxzpMYezEzetcoFTEyowgVaX95p5K8xqEdyP2pFkcvqeVXbyMZMBWBDe73G5Dv92SLyTBxaj5yNnStALET326"
 		  ],
-		  "compression": "none",ß
+		  "compression": "none",
 		  "packed_context_free_data": "",
 		  "packed_trx": "3a2a825c437e17a06a68000000000100a6823403ea3055000000572d3ccdcd011042421a7b53315500000000a8ed3232211042421a7b5331551042746679533155e80300000000000004454f53000000000000"
 		}
@@ -560,7 +569,7 @@
 # CYBABO TRON API Sample
 ### Get Account
 - **POST** /v1/tron/wallet/getaccount
-	-  Queries information about an account. Returns the account object.
+	- Queries information about an account. Returns the account object.
 		-  Request
 
 		``` json
