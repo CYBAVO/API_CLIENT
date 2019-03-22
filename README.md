@@ -1251,3 +1251,200 @@
 		  }
 		}
 		```
+
+# CYBABO Litecoin API Sample
+
+### Prerequisite
+
+- Please obtain following info from CYBAVO Team
+	- API URL 
+	- API code
+	- API secret
+
+## API set
+### Transaction
+- **GET** /v1/ltc/fee
+	- 查詢建議交易費
+		- Response
+
+		``` json
+		{
+			"error_code": 0,
+  		"result": {
+    		"High": "0.00257332",
+    		"Medium": "0.00257332",
+    		"Low": "0.00257332",
+    		"Suggest": "0.00257332"
+  		}
+		}
+		```
+
+- **GET** /v1/ltc/addressbalance/`LTC_ADDRESS`
+	- 查詢指定的錢包餘額
+		- Response
+
+		``` json
+		{
+  		"error_code": 0,
+  		"result": {
+    		"Balance": "4.99865"
+  		}
+		}
+		```
+
+- **GET**  /v1/ltc/confirm/`LTC_TXID`
+	- 查詢指定交易的已確認區塊數
+		- Response
+		
+		``` json
+		{
+  		"error_code": 0,
+  		"result": {
+    		"Number": 3580
+  		}
+		}
+		```
+
+- **GET**  /v1/ltc/addressunconfirmbalance/`LTC_ADDRESS`
+	- 查詢指定的錢包未確認金額
+		- Response
+
+		``` json
+		{
+  		"error_code": 0,
+  		"result": {
+    		"UnconfirmBalance": "0.1234"
+  		}
+		}
+		```
+
+- **POST**  /v1/ltc/createpayment
+	- 建立交易資訊，由服務端自動挑選UTXO進行計算，並回傳建立完成的交易資訊編碼
+		- Request
+
+		``` json
+		{
+  		"FromAddress": "QNdiW2GFR4mTw1in7Nn2LAEV1NeFphUAJg",
+  		"ToAddress": "miQihDe6EvUzaKX7DB4yFfTEB3P6FYDVWK",
+  		"Amount": "0.87788769",
+  		"Fee": "0.0000416"
+		}
+		```
+
+		- Response
+
+		``` json
+		{
+  		"error_code": 0,
+  		"result": {
+    		"TransactionHash": "7b227261777478223a22303130303030303030313863613563373065356530383331396538303161666434313466616237366362613131323237643732653833316535653461613730633335633766313762633030313030303030303030666666666666666630326531386333623035303030303030303031393736613931343166626138373432653562343764363363313030323732653364303137633739373264643339323638386163623435376332303030303030303030303137613931343136343430646564663030323066386561366564353234313636633530646238353835633233333838373030303030303030222c22696e707574616d6f756e74223a5b7b2261646472657373223a22514e64695732474652346d547731696e374e6e324c414556314e6546706855414a67222c22616d6f756e74223a3130303533303230357d5d7d",
+    		"Fee": "5e-05"
+  		}
+		}
+		```
+
+- **POST**  /v1/ltc/submitpayment
+	- 上傳已簽名交易訊息至區塊鏈
+		- Request
+		
+		``` json
+		{
+  		"Transaction": "01000000000101fbb28dd706c6817525a55835cbd8da78b67f617f731dbd0fbbd98460492d543d01000000171600148dc0222aad18401c9b5a510b10a3177729e6ccc0ffffffff0210270000000000001976a9141fba8742e5b47d63c100272e3d017c7972dd392688ac101bcb1d0000000017a914aed75052d9ecaf0a2562aaee8ee044dfc2bb75bd8702473044022035a599e87c928a6e27310e63c2e9e6c7b086504afb7ee44c9baa442d123375e20220023fd88234fce894484a88061cb8b213c272326c41f8d552d10055043d885476012103379b73388a9cc5a09f310d96cc357a50d1ebbe57e0ef904cf205714411eacac100000000"
+		}
+		```
+
+		- Response
+
+		``` json
+		{
+  		"error_code": 0,
+  		"result": {
+    		"State": true,
+    		"TxId": "ea6bff6609824a9970369dbc9360dd0e9bc1efba4794792fe20c4c6e14a72b37"
+  		}
+		}
+		```
+
+- **GET**  /v1/ltc/addressutxo/`LTC_ADDRESS`
+	- 查詢錢包UTXO
+		- Response
+
+		``` json
+		{
+  		"error_code": 0,
+  		"result": [
+    		{
+      		"address": "QTMdUhWACZxfxKTC9jFGLJ6QJCQKzz4jea",
+      		"txid": "5feb587d6e1df471bbda672cad8a7431f1e5c99a4b5299e9d3f3561296c03e08",
+      		"outputIndex": 0,
+      		"satoshis": 998009364,
+      		"script": "a9144a11d5c96c66a94e0bccc6f81b1244013bcf2b3687",
+      		"height": 1024468,
+      		"confirmations": 1629,
+      		"pending": false
+    		},
+    		{
+      		"address": "QTMdUhWACZxfxKTC9jFGLJ6QJCQKzz4jea",
+      		"txid": "5feb587d6e1df471bbda672cad8a7431f1e5c99a4b5299e9d3f3561296c03e08",
+      		"outputIndex": 1,
+      		"satoshis": 1000000,
+      		"script": "a9144a11d5c96c66a94e0bccc6f81b1244013bcf2b3687",
+      		"height": 1024468,
+      		"confirmations": 1629,
+      		"pending": false
+    		},
+    		{
+      		"address": "QTMdUhWACZxfxKTC9jFGLJ6QJCQKzz4jea",
+      		"txid": "06d1d92052df90081299bf0275c9d3c82b518ee699723b1061f302a10a8609f2",
+      		"outputIndex": 0,
+      		"satoshis": 50000000,
+      		"script": "a9144a11d5c96c66a94e0bccc6f81b1244013bcf2b3687",
+      		"height": 1024468,
+      		"confirmations": 1629,
+      		"pending": false
+    		},
+    		{
+      		"address": "QTMdUhWACZxfxKTC9jFGLJ6QJCQKzz4jea",
+      		"txid": "025fc20f8fc9794c117b24943ca8458cdd804bdf4713d93ac1b72a75818f8110",
+      		"outputIndex": 0,
+      		"satoshis": 500000000,
+      		"script": "a9144a11d5c96c66a94e0bccc6f81b1244013bcf2b3687",
+      		"height": 1025276,
+      		"confirmations": 821,
+      		"pending": false
+    		}
+  		]
+		}
+		```
+
+- **GET**  /v1/ltc/addresshistory/`LTC_ADDRESS`/`NUMBER`
+	- 查詢錢包交易歷史，需指定查詢數量
+		- Response
+
+		``` json
+		{
+  		"error_code": 0,
+  		"result": {
+    		"txids": [
+      		"3d542d496084d9bb0fbd1d737f617fb678dad8cb3558a5257581c606d78db2fb",
+      		"d032a022140032c3b621ad4adead93a50b764fd457b0ff2a5d12799fec54304b",
+      		"6fd5ee0b912765a2d911f7fad0fcf189d3c982d85730d127f6acc9678856390e",
+      		"d81f95db9d107121f5ca799a42c1dd7c706aefda461257f9f766bc9c1d0a2dc0",
+      		"632bfc5fc645f3cdea27a6f2ddcaa758d18ef918fb06c6725d1980efc6f7f396",
+      		"62153b0636f88e3149b1bd5ecd0bf5bb69fb50b44cd8a52160d182115efd8b07",
+      		"64ffbe475f74cce4a71149914316ffc9f5503fc7d2ee414cba85672e4e12d9f5",
+      		"0b3b76b03b4cff268947af3ec1dea4cbdf52794c5fbe4a7934ac3d1efbe938b0",
+      		"d5604f5c644700ca6955385f5e558c00175559b036237479bd93e8bfef5c5801",
+      		"844ecfff4a218f0c09c60f631d64ca0fbb57ea17220adf4a6e16391a3e10f3e0"
+    		],
+    		"txid_states": null,
+    		"txcount": 10,
+    		"txin_count": 0,
+    		"txout_count": 0,
+    		"address": "QcYTcwUNkKu4e6BJWZTYeT6NR16Z9C72FT"
+  		}
+		}
+		```
+
+
+

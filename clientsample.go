@@ -197,3 +197,84 @@ func exampleTronTriggerSmartContact() {
 	resp, err := makeRequest("POST", "/v1/tron/wallet/triggersmartcontract", nil, &request)
 	printResult(resp, err)
 }
+
+//For LTC
+func exampleLTCGetFee() {
+	url := "/v1/ltc/fee"
+
+	params := []string{}
+	resp, err := makeRequest("GET", url, params, nil)
+
+	log.Println("response =", string(resp))
+	log.Println("error =", err)
+}
+
+func exampleGetBalance(address string) {
+	url := fmt.Sprintf("/v1/ltc/addressbalance/%s", address)
+
+	params := []string{}
+	params = append(params, fmt.Sprintf("address=%s", address))
+	resp, err := makeRequest("GET", url, params, nil)
+
+	log.Println("response =", string(resp))
+	log.Println("error =", err)
+}
+
+func exampleGetConfirmBlocksByTxID(txid string) {
+	url := fmt.Sprintf("/v1/ltc/confirm/%s", txid)
+
+	params := []string{}
+	params = append(params, fmt.Sprintf("txid=%s", txid))
+	resp, err := makeRequest("GET", url, params, nil)
+
+	log.Println("response =", string(resp))
+	log.Println("error =", err)
+}
+
+func exampleGetUnconfirmBalance(address string) {
+	url := fmt.Sprintf("/v1/ltc/addressunconfirmbalance/%s", address)
+
+	params := []string{}
+	params = append(params, fmt.Sprintf("address=%s", address))
+	resp, err := makeRequest("GET", url, params, nil)
+
+	log.Println("response =", string(resp))
+	log.Println("error =", err)
+}
+
+func examplePushTransaction() {
+	request := `{"Type":0,"FromAddress":"QNdiW2GFR4mTw1in7Nn2LAEV1NeFphUAJg","TokenAddress":"","ToAddress":"miQihDe6EvUzaKX7DB4yFfTEB3P6FYDVWK","Amount":"0.87788769","Fee":"0.0000416"}`
+
+	resp, err := makeRequest("POST", "/v1/ltc/createpayment", nil, &request)
+	printResult(resp, err)
+}
+
+func exampleSendSignedTransaction() {
+	request := `{"Type":0,"TokenAddress":"","Transaction":"01000000000101fbb28dd706c6817525a55835cbd8da78b67f617f731dbd0fbbd98460492d543d01000000171600148dc0222aad18401c9b5a510b10a3177729e6ccc0ffffffff0210270000000000001976a9141fba8742e5b47d63c100272e3d017c7972dd392688ac101bcb1d0000000017a914aed75052d9ecaf0a2562aaee8ee044dfc2bb75bd8702473044022035a599e87c928a6e27310e63c2e9e6c7b086504afb7ee44c9baa442d123375e20220023fd88234fce894484a88061cb8b213c272326c41f8d552d10055043d885476012103379b73388a9cc5a09f310d96cc357a50d1ebbe57e0ef904cf205714411eacac100000000"}`
+
+	resp, err := makeRequest("POST", "/v1/ltc/submitpayment", nil, &request)
+	printResult(resp, err)
+}
+
+func exampleGetUTXO(address string) {
+	url := fmt.Sprintf("/v1/ltc/addressutxo/%s", address)
+
+	params := []string{}
+	params = append(params, fmt.Sprintf("address=%s", address))
+	resp, err := makeRequest("GET", url, params, nil)
+
+	log.Println("response =", string(resp))
+	log.Println("error =", err)
+}
+
+func exampleGetAddressHistory(address string, count string) {
+	url := fmt.Sprintf("/v1/ltc/addresshistory/%s/%s", address, count)
+
+	params := []string{}
+	params = append(params, fmt.Sprintf("address=%s", address))
+	params = append(params, fmt.Sprintf("count=%s", count))
+	resp, err := makeRequest("GET", url, params, nil)
+
+	log.Println("response =", string(resp))
+	log.Println("error =", err)
+}
