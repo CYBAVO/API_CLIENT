@@ -5,7 +5,7 @@
     * Query resource data of the specific account [[go]](#Query-resource-data-of-the-specific-account)
     * Query balance of the specific account [[go]](#Query-balance-of-the-specific-account)
     * Query detailed information of transactions in the specific block and block height [[go]](#Query-detailed-information-of-transactions-in-the-specific-block-and-block-height)
-    * Query detailed information of transactions in the latest block and block height [[go]] (#Query-detailed-information-of-transactions-in-the-latest-block-and-block-height)
+    * Query detailed information of transactions in the latest block and block height [[go]](#Query-detailed-information-of-transactions-in-the-latest-block-and-block-height)
     * Query detailed information of transactions in the latest irreversible block and block height [[go]](Query-detailed-information-of-transactions-in-the-latest-irreversible-block-and-block-height)
     * Convert json to binary [[go]](#Convert-json-to-binary)
     * Receive the signed JSON transaction and broadcast it to blockchain [[go]](#Receive-the-signed-JSON-transaction-and-broadcast-it-to-blockchain)
@@ -1036,7 +1036,7 @@
 	-	Query transaction by ID.
 		- Request
 
-		``` json
+		```json
 		{
 		  "value": "d0807adb3c5412aa150787b944c96ee898c997debdc27e2f6a643c771edb5933"
 		}
