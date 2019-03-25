@@ -42,7 +42,7 @@
 	- API code
 	- API secret
 ---------------------------------------
-# CYBAVO EOS API Sample
+# CYBAVO EOS API Sample
 
 ####  Account information
 - Query basic information of the specific account 
@@ -597,7 +597,7 @@
 		```
 
 ---------------------------------------
-# CYBAVO TRON API Sample
+# CYBAVO TRON API Sample
 
 ### Get Account Information
 - Queries information about an account. Returns the account object.
@@ -1285,7 +1285,7 @@
 		}
 		```
 ---------------------------------------
-# CYBAVO Litecoin API Sample
+# CYBAVO Litecoin API Sample
 
 ### Transaction Fee
 - Query transaction fee
