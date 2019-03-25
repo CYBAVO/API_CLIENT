@@ -1,16 +1,39 @@
 # CYBABO Ledger Service
 ## Supportted Currencies
 * [EOS](#CYBABO-EOS-API-Sample)
-    * Account information [[go]](#Account-information) 
-    * Resource information [[go]](#Resource-information)
-    * Balance information [[go]](#Balance-information)
-    * Transactions information [[go]](#Transactions-information)
-    * Transactions information in latest block [[go]](#Transactions-information-in-latest-block)
-    * Transactions information in the latest irreversible block [[go]](Transactions-information-in-the-latest-irreversible-block)
-    * Convert json to binary [[go]](#Convert-json-to-binary)
-    * Send signed transaction [[go]](#Send-signed-transaction)
+  * Account information [[go]](#Account-information) 
+  * Resource information [[go]](#Resource-information)
+  * Balance information [[go]](#Balance-information)
+  * Transactions information [[go]](#Transactions-information)
+  * Transactions information in latest block [[go]](#Transactions-information-in-latest-block)
+  * Transactions information in the latest irreversible block [[go]](#Transactions-information-in-the-latest-irreversible-block)
+  * Convert json to binary [[go]](#Convert-json-to-binary)
+  * Send signed transaction [[go]](#Send-signed-transaction)
+
 * [TRON](#CYBABO-TRON-API-Sample)
+	* Get Account Information [[go]](#Get-Account-Information)
+	* Account Bandwidth Information [[go]](#Account-Bandwidth-Information)
+	* Block by Block Height [[go]](#Block-by-Block-Height)
+	* Block by ID [[go]](#Block-by-ID)
+	* Block by Latest Number [[go]](#Block-by-Latest-Number)
+	* Block by Limit Next [[go]](#Block-by-Limit-Next)
+	* Get Latest Block [[go]](#Get-Latest-Block)
+	* Broadcast Transaction [[go]](#Broadcast-Transaction)
+	* Validate Address [[go]](#Validate-Address)
+	* Transactions by ID [[go]](#Transactions-by-ID)
+	* Transaction Info by ID [[go]](#Transaction-Info-by-ID)
+	* Get Contract [[go]](#Get-Contract)
+	* Trigger Smart Contract [[go]](#Trigger-Smart-Contract)
+
 * [Litecoin](#CYBABO-Litecoin-API-Sample)
+	* Transaction fee [[go]](#Transaction-fee)
+	* Get address balance [[go]](#Get-address-balance)
+	* Get confirmation of TXID [[go]](#Get-confirmation-of-TXID)
+	* Get unconfirmed balance [[go]](#Get-unconfirmed-balance)
+	* Create raw transaction [[go]](#Create-raw-transaction)
+	* Broadcast signed transaction [[go]](#Broadcast-signed-transaction)
+	* Get UTXO in address [[go]](#Broadcast-signed-transaction)
+	* Get transaction history in address [[go]](#Get-transaction-history-in-address)
 
 ## Prerequisite
 
@@ -22,9 +45,9 @@
 # CYBABO EOS API Sample
 
 ####  Account information
-##### Query basic information of the specific account 
-- **GET** /v1/eos/account/`EOS_ACCOUNT_NAME`/info
-	- Response
+- Query basic information of the specific account 
+	- **GET** /v1/eos/account/`EOS_ACCOUNT_NAME`/info
+		- Response
 
 		``` json
 		{
@@ -65,8 +88,8 @@
 		```
 
 #### Resource information
-##### Query resource information of the specific account
-- **GET** /v1/eos/account/`EOS_ACCOUNT_NAME`/resouce
+- Query resource information of the specific account
+	- **GET** /v1/eos/account/`EOS_ACCOUNT_NAME`/resouce
 	  - Response
 
 		``` json
@@ -96,9 +119,9 @@
 		```
 
 #### Balance information
-##### Query balance of the specific account
-- **GET** /v1/eos/account/`EOS_ACCOUNT_NAME`/balance
-	- Response
+- Query balance of the specific account
+	- **GET** /v1/eos/account/`EOS_ACCOUNT_NAME`/balance
+		- Response
 
 		``` json
 		{
@@ -110,9 +133,9 @@
 		```
 
 #### Transactions information
-##### Query detailed information of transactions in the specific block and block height
-- **GET** /v1/eos/block/`BLOCK_NUM`
-	- Response
+- Query detailed information of transactions in the specific block and block height
+	- **GET** /v1/eos/block/`BLOCK_NUM`
+		- Response
 
 		``` json
 		{
@@ -189,9 +212,9 @@
 		```
 
 #### Transactions information in the latest block
-##### Query detailed information of transactions in the latest block and block height
-- **GET** /v1/eos/block/latest
-	- Response
+- Query detailed information of transactions in the latest block and block height
+	- **GET** /v1/eos/block/latest
+		- Response
 
 		``` json
 		{
@@ -343,9 +366,9 @@
 		```
 
 #### Transactions information in the latest irreversible block
-##### Query detailed information of transactions in the latest irreversible block and block height
-- **GET** /v1/eos/block/latest\_irreversible
-	- Response
+- Query detailed information of transactions in the latest irreversible block and block height
+	- **GET** /v1/eos/block/latest\_irreversible
+		- Response
 
 		``` json
 		{
@@ -371,9 +394,9 @@
 		```
 
 #### Convert
-##### Convert json to binary
-- **POST** /v1/eos/abi\_json\_to\_bin
-	- Request
+- Convert json to binary
+	- **POST** /v1/eos/abi\_json\_to\_bin
+		- Request
 		
 		``` json
 		{
@@ -399,10 +422,10 @@
 		}
 		```
 
-#### Send signed transaction
-##### Receive the signed JSON transaction and broadcast it to blockchain
-- **POST** /v1/eos/transaction/send
-	- Request
+#### Broadcast signed transaction
+- Receive the signed JSON transaction and broadcast it to blockchain
+	- **POST** /v1/eos/transaction/send
+		- Request
 
 		``` json
 		{
@@ -572,12 +595,13 @@
 		  }
 		}
 		```
-		
+
 ---------------------------------------
 # CYBABO TRON API Sample
-### Get Account
-- **POST** /v1/tron/wallet/getaccount
-	- Queries information about an account. Returns the account object.
+
+### Get Account Information
+- Queries information about an account. Returns the account object.
+	- **POST** /v1/tron/wallet/getaccount
 		-  Request
 
 		``` json
@@ -610,8 +634,8 @@
 		```
 		
 ### Account Bandwidth Information
-- **POST** /v1/tron/wallet/getaccountnet
-	- Returns bandwith information for the account. If a field doesn't appear, then the corresponding value is 0.
+- Returns bandwith information for the account. If a field doesn't appear, then the corresponding value is 0.
+	- **POST** /v1/tron/wallet/getaccountnet
 		-  Request
 
 		``` json
@@ -643,8 +667,8 @@
 		```
 
 ### Block by Block Height
--	**POST** /v1/tron/wallet/getblockbynum
-	-	Returns the Block Object corresponding to the 'Block Height' specified (number of blocks preceding it).
+- Returns the Block Object corresponding to the 'Block Height' specified (number of blocks preceding it).
+	-	**POST** /v1/tron/wallet/getblockbynum	
 		- Request
 
 		``` json
@@ -673,8 +697,8 @@
 		```
 		
 ### Block by ID
--	**POST** /v1/tron/wallet/getblockbyid
-	-	Query block by ID.
+- Query block by ID.
+	-	**POST** /v1/tron/wallet/getblockbyid
 		- Request
 
 		``` json
@@ -703,8 +727,8 @@
 		```
 		
 ### Block by Latest Number
--	**POST** /v1/tron/wallet/getblockbylatestnum
-	-	Returns a list of block objects.
+- Returns a list of block objects.
+	-	**POST** /v1/tron/wallet/getblockbylatestnum	
 		- Request
 
 		``` json
@@ -816,8 +840,8 @@
 		```
 		
 ### Block by Limit Next
--	**POST** /v1/tron/wallet/getblockbylatestnum
-	-	Returns the list of Block Objects included in the 'Block Height' range specified.
+- Returns the list of Block Objects included in the 'Block Height' range specified.
+	-	**POST** /v1/tron/wallet/getblockbylatestnum
 		-	Request
 
 		``` json
@@ -850,8 +874,8 @@
 		```
 		
 ### Get Latest Block
--	**POST** /v1/tron/wallet/getnowblock
-	-	Query the latest block synced to the Full Node.
+-	Query the latest block synced to the Full Node.
+	-	**POST** /v1/tron/wallet/getnowblock
 		-	Request
 
 		``` json
@@ -979,9 +1003,9 @@
 		```
 		
 ### Broadcast Transaction
--	**POST** /v1/tron/wallet/broadcasttransaction
-	-	Returns broadcast success or failure status.
-		- Request
+- Returns broadcast success or failure status.
+-	**POST** /v1/tron/wallet/broadcasttransaction	
+	- Request
 
 		``` json
 		{
@@ -1020,9 +1044,9 @@
 		```
 		
 ### Validate Address
+- Validates address, returns either true or false.
 -	**POST** /v1/tron/wallet/validateaddress
-	-	Validates address, returns either true or false.
-		- Request
+	- Request
 
 		``` json
 		{
@@ -1040,8 +1064,8 @@
 		```
 		
 ### Transactions by ID
--	**POST** /v1/tron/wallet/gettransactionbyid
-	-	Query transaction by ID.
+- Query transaction by ID.
+	-	**POST** /v1/tron/wallet/gettransactionbyid
 		- Request
 
 		```json
@@ -1145,9 +1169,9 @@
 		```
 		
 ### Transaction Info by ID
--	**POST** /v1/tron/wallet/gettransactioninfobyid
-	-	Query transaction info by ID.
-		- Request
+- Query transaction info by ID.
+-	**POST** /v1/tron/wallet/gettransactioninfobyid	
+	- Request
 
 		``` json
 		{
@@ -1206,8 +1230,8 @@
 		```
 		
 ### Trigger Smart Contract
--	**POST** /v1/tron/wallet/triggersmartcontract
-	-	Returns TransactionExtention, which contains the unsigned Transaction.
+-	Returns TransactionExtention, which contains the unsigned Transaction.
+	-	**POST** /v1/tron/wallet/triggersmartcontract
 		- Request
 
 		``` json
@@ -1262,10 +1286,11 @@
 		```
 ---------------------------------------
 # CYBABO Litecoin API Sample
-### Transaction
+
+### Transaction Fee
+- Query transaction fee
 - **GET** /v1/ltc/fee
-	- 查詢建議交易費
-		- Response
+	- Response
 
 		``` json
 		{
@@ -1279,9 +1304,10 @@
 		}
 		```
 
+### Get address balance
+- Query balance in specific address
 - **GET** /v1/ltc/addressbalance/`LTC_ADDRESS`
-	- 查詢指定的錢包餘額
-		- Response
+	- Response
 
 		``` json
 		{
@@ -1292,9 +1318,10 @@
 		}
 		```
 
+### Get confirmation of TXID
+- Query confirmation number in specific txid
 - **GET**  /v1/ltc/confirm/`LTC_TXID`
-	- 查詢指定交易的已確認區塊數
-		- Response
+	- Response
 		
 		``` json
 		{
@@ -1305,6 +1332,8 @@
 		}
 		```
 
+### Get unconfirmed balance
+- Query unconfirmed balance in specific address
 - **GET**  /v1/ltc/addressunconfirmbalance/`LTC_ADDRESS`
 	- 查詢指定的錢包未確認金額
 		- Response
@@ -1318,8 +1347,9 @@
 		}
 		```
 
-- **POST**  /v1/ltc/createpayment
-	- 建立交易資訊，由服務端自動挑選UTXO進行計算，並回傳建立完成的交易資訊編碼
+### Create raw transaction
+- Create transaction information. Server selects eligible UTXO and returns encoding string of transaction
+	- **POST**  /v1/ltc/createpayment
 		- Request
 
 		``` json
@@ -1343,8 +1373,9 @@
 		}
 		```
 
-- **POST**  /v1/ltc/submitpayment
-	- 上傳已簽名交易訊息至區塊鏈
+### Send signed transaction
+- Send signed transaction to blockchain
+	- **POST**  /v1/ltc/submitpayment
 		- Request
 		
 		``` json
@@ -1365,9 +1396,10 @@
 		}
 		```
 
+### Get UTXO in address
+- Query UTXO in specific address
 - **GET**  /v1/ltc/addressutxo/`LTC_ADDRESS`
-	- 查詢錢包UTXO
-		- Response
+	- Response
 
 		``` json
 		{
@@ -1417,9 +1449,10 @@
 		}
 		```
 
+### Get transaction history in address
+- Query transaction history in address by specific number
 - **GET**  /v1/ltc/addresshistory/`LTC_ADDRESS`/`NUMBER`
-	- 查詢錢包交易歷史，需指定查詢數量
-		- Response
+	- Response
 
 		``` json
 		{
