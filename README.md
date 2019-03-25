@@ -1,6 +1,6 @@
 # CYBAVO Ledger Service
 ## Supportted Currencies
-* [EOS](#CYBAVO-EOS-API-Sample)
+* [EOS](#CYBAVO-EOS-API-Sample)
   * Account information [[go]](#Account-information) 
   * Resource information [[go]](#Resource-information)
   * Balance information [[go]](#Balance-information)
@@ -10,7 +10,7 @@
   * Convert json to binary [[go]](#Convert-json-to-binary)
   * Send signed transaction [[go]](#Send-signed-transaction)
 
-* [TRON](#CYBAVO-TRON-API-Sample)
+* [TRON](#CYBAVO-TRON-API-Sample)
 	* Get Account Information [[go]](#Get-Account-Information)
 	* Account Bandwidth Information [[go]](#Account-Bandwidth-Information)
 	* Block by Block Height [[go]](#Block-by-Block-Height)
@@ -25,7 +25,7 @@
 	* Get Contract [[go]](#Get-Contract)
 	* Trigger Smart Contract [[go]](#Trigger-Smart-Contract)
 
-* [Litecoin](#CYBAVO-Litecoin-API-Sample)
+* [Litecoin](#CYBAVO-Litecoin-API-Sample)
 	* Transaction fee [[go]](#Transaction-fee)
 	* Get address balance [[go]](#Get-address-balance)
 	* Get confirmation of TXID [[go]](#Get-confirmation-of-TXID)
@@ -1004,8 +1004,8 @@
 		
 ### Broadcast Transaction
 - Returns broadcast success or failure status.
--	**POST** /v1/tron/wallet/broadcasttransaction	
-	- Request
+	-	**POST** /v1/tron/wallet/broadcasttransaction	
+		- Request
 
 		``` json
 		{
@@ -1045,8 +1045,8 @@
 		
 ### Validate Address
 - Validates address, returns either true or false.
--	**POST** /v1/tron/wallet/validateaddress
-	- Request
+	-	**POST** /v1/tron/wallet/validateaddress
+		- Request
 
 		``` json
 		{
@@ -1170,8 +1170,8 @@
 		
 ### Transaction Info by ID
 - Query transaction info by ID.
--	**POST** /v1/tron/wallet/gettransactioninfobyid	
-	- Request
+	-	**POST** /v1/tron/wallet/gettransactioninfobyid	
+		- Request
 
 		``` json
 		{
@@ -1289,8 +1289,8 @@
 
 ### Transaction Fee
 - Query transaction fee
-- **GET** /v1/ltc/wallet/fee
-	- Response
+	- **GET** /v1/ltc/wallet/fee
+		- Response
 
 		``` json
 		{
@@ -1306,8 +1306,8 @@
 
 ### Get address balance
 - Query balance in specific address
-- **GET** /v1/ltc/wallet/addressbalance/`LTC_ADDRESS`
-	- Response
+	- **GET** /v1/ltc/wallet/addressbalance/`LTC_ADDRESS`
+		- Response
 
 		``` json
 		{
@@ -1320,8 +1320,8 @@
 
 ### Get confirmation of TXID
 - Query confirmation number in specific txid
-- **GET**  /v1/ltc/transaction/confirm/`LTC_TXID`
-	- Response
+	- **GET**  /v1/ltc/transaction/confirm/`LTC_TXID`
+		- Response
 		
 		``` json
 		{
@@ -1334,8 +1334,8 @@
 
 ### Get unconfirmed balance
 - Query unconfirmed balance in specific address
-- **GET**  /v1/ltc/transaction/addressunconfirmbalance/`LTC_ADDRESS`
-	- Response
+	- **GET**  /v1/ltc/transaction/addressunconfirmbalance/`LTC_ADDRESS`
+		- Response
 
 		``` json
 		{
@@ -1397,8 +1397,8 @@
 
 ### Get UTXO in address
 - Query UTXO in specific address
-- **GET**  /v1/ltc/transaction/addressutxo/`LTC_ADDRESS`
-	- Response
+	- **GET**  /v1/ltc/transaction/addressutxo/`LTC_ADDRESS`
+		- Response
 
 		``` json
 		{
@@ -1450,8 +1450,8 @@
 
 ### Get transaction history in address
 - Query transaction history in address by specific number
-- **GET**  /v1/ltc/wallet/addresshistory/`LTC_ADDRESS`/`NUMBER`
-	- Response
+	- **GET**  /v1/ltc/wallet/addresshistory/`LTC_ADDRESS`/`NUMBER`
+		- Response
 
 		``` json
 		{
