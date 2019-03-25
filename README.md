@@ -1,6 +1,6 @@
 # CYBAVO Ledger Service
 ## Supportted Currencies
-* [EOS](#CYBABO-EOS-API-Sample)
+* [EOS](#CYBAVO-EOS-API-Sample)
   * Account information [[go]](#Account-information) 
   * Resource information [[go]](#Resource-information)
   * Balance information [[go]](#Balance-information)
@@ -10,7 +10,7 @@
   * Convert json to binary [[go]](#Convert-json-to-binary)
   * Send signed transaction [[go]](#Send-signed-transaction)
 
-* [TRON](#CYBABO-TRON-API-Sample)
+* [TRON](#CYBAVO-TRON-API-Sample)
 	* Get Account Information [[go]](#Get-Account-Information)
 	* Account Bandwidth Information [[go]](#Account-Bandwidth-Information)
 	* Block by Block Height [[go]](#Block-by-Block-Height)
@@ -25,7 +25,7 @@
 	* Get Contract [[go]](#Get-Contract)
 	* Trigger Smart Contract [[go]](#Trigger-Smart-Contract)
 
-* [Litecoin](#CYBABO-Litecoin-API-Sample)
+* [Litecoin](#CYBAVO-Litecoin-API-Sample)
 	* Transaction fee [[go]](#Transaction-fee)
 	* Get address balance [[go]](#Get-address-balance)
 	* Get confirmation of TXID [[go]](#Get-confirmation-of-TXID)
@@ -42,7 +42,7 @@
 	- API code
 	- API secret
 ---------------------------------------
-# CYBABO EOS API Sample
+# CYBAVO EOS API Sample
 
 ####  Account information
 - Query basic information of the specific account 
@@ -597,7 +597,7 @@
 		```
 
 ---------------------------------------
-# CYBABO TRON API Sample
+# CYBAVO TRON API Sample
 
 ### Get Account Information
 - Queries information about an account. Returns the account object.
@@ -1285,7 +1285,7 @@
 		}
 		```
 ---------------------------------------
-# CYBABO Litecoin API Sample
+# CYBAVO Litecoin API Sample
 
 ### Transaction Fee
 - Query transaction fee
