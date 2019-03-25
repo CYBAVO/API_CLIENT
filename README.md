@@ -393,7 +393,7 @@
 		}
 		```
 
-#### Convert
+#### Convert json to binary
 - Convert json to binary
 	- **POST** /v1/eos/abi\_json\_to\_bin
 		- Request
