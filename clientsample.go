@@ -1,12 +1,12 @@
 // Copyright (c) 2018-2019 The Cybavo developers
 // All Rights Reserved.
-// NOTICE: All information contained herein is, and remains  
+// NOTICE: All information contained herein is, and remains
 // the property of Cybavo and its suppliers,
-// if any. The intellectual and technical concepts contained  
-// herein are proprietary to Cybavo 
+// if any. The intellectual and technical concepts contained
+// herein are proprietary to Cybavo
 // Dissemination of this information or reproduction of this materia
-// is strictly forbidden unless prior written permission is obtained 
-// from Cybavo. 
+// is strictly forbidden unless prior written permission is obtained
+// from Cybavo.
 
 package main
 
@@ -283,6 +283,18 @@ func exampleGetAddressHistory(address string, count string) {
 	params := []string{}
 	params = append(params, fmt.Sprintf("address=%s", address))
 	params = append(params, fmt.Sprintf("count=%s", count))
+	resp, err := makeRequest("GET", url, params, nil)
+
+	log.Println("response =", string(resp))
+	log.Println("error =", err)
+}
+
+func exampleGetTxInfo(txid string, address string) {
+	url := fmt.Sprintf("/v1/ltc/transaction/txinfo/%s/%s", txid, address)
+
+	params := []string{}
+	params = append(params, fmt.Sprintf("txid=%s", txid))
+	params = append(params, fmt.Sprintf("address=%s", address))
 	resp, err := makeRequest("GET", url, params, nil)
 
 	log.Println("response =", string(resp))
