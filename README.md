@@ -1289,7 +1289,7 @@
 
 ### Transaction Fee
 - Query transaction fee
-- **GET** /v1/ltc/fee
+- **GET** /v1/ltc/wallet/fee
 	- Response
 
 		``` json
@@ -1306,7 +1306,7 @@
 
 ### Get address balance
 - Query balance in specific address
-- **GET** /v1/ltc/addressbalance/`LTC_ADDRESS`
+- **GET** /v1/ltc/wallet/addressbalance/`LTC_ADDRESS`
 	- Response
 
 		``` json
@@ -1320,7 +1320,7 @@
 
 ### Get confirmation of TXID
 - Query confirmation number in specific txid
-- **GET**  /v1/ltc/confirm/`LTC_TXID`
+- **GET**  /v1/ltc/transaction/confirm/`LTC_TXID`
 	- Response
 		
 		``` json
@@ -1334,9 +1334,8 @@
 
 ### Get unconfirmed balance
 - Query unconfirmed balance in specific address
-- **GET**  /v1/ltc/addressunconfirmbalance/`LTC_ADDRESS`
-	- 查詢指定的錢包未確認金額
-		- Response
+- **GET**  /v1/ltc/transaction/addressunconfirmbalance/`LTC_ADDRESS`
+	- Response
 
 		``` json
 		{
@@ -1349,7 +1348,7 @@
 
 ### Create raw transaction
 - Create transaction information. Server selects eligible UTXO and returns encoding string of transaction
-	- **POST**  /v1/ltc/createpayment
+	- **POST**  /v1/ltc/transaction/createpayment
 		- Request
 
 		``` json
@@ -1375,7 +1374,7 @@
 
 ### Send signed transaction
 - Send signed transaction to blockchain
-	- **POST**  /v1/ltc/submitpayment
+	- **POST**  /v1/ltc/transaction/submitpayment
 		- Request
 		
 		``` json
@@ -1398,7 +1397,7 @@
 
 ### Get UTXO in address
 - Query UTXO in specific address
-- **GET**  /v1/ltc/addressutxo/`LTC_ADDRESS`
+- **GET**  /v1/ltc/transaction/addressutxo/`LTC_ADDRESS`
 	- Response
 
 		``` json
@@ -1451,7 +1450,7 @@
 
 ### Get transaction history in address
 - Query transaction history in address by specific number
-- **GET**  /v1/ltc/addresshistory/`LTC_ADDRESS`/`NUMBER`
+- **GET**  /v1/ltc/wallet/addresshistory/`LTC_ADDRESS`/`NUMBER`
 	- Response
 
 		``` json
