@@ -1,14 +1,14 @@
 # CYBABO Ledger Service
 ## Supportted Currencies
 * [EOS](#CYBABO-EOS-API-Sample)
-    * Query basic information of the specific account [[go]](#Query-basic-information-of-the-specific-account) 
-    * Query resource data of the specific account [[go]](#Query-resource-data-of-the-specific-account)
-    * Query balance of the specific account [[go]](#Query-balance-of-the-specific-account)
-    * Query detailed information of transactions in the specific block and block height [[go]](#Query-detailed-information-of-transactions-in-the-specific-block-and-block-height)
-    * Query detailed information of transactions in the latest block and block height [[go]](#Query-detailed-information-of-transactions-in-the-latest-block-and-block-height)
-    * Query detailed information of transactions in the latest irreversible block and block height [[go]](Query-detailed-information-of-transactions-in-the-latest-irreversible-block-and-block-height)
+    * Account information [[go]](#Account-information) 
+    * Resource information [[go]](#Resource-information)
+    * Balance information [[go]](#Balance-information)
+    * Transactions information [[go]](#Transactions-information)
+    * Transactions information in latest block [[go]](#Transactions-information-in-latest-block)
+    * Transactions information in the latest irreversible block [[go]](Transactions-information-in-the-latest-irreversible-block)
     * Convert json to binary [[go]](#Convert-json-to-binary)
-    * Receive the signed JSON transaction and broadcast it to blockchain [[go]](#Receive-the-signed-JSON-transaction-and-broadcast-it-to-blockchain)
+    * Send signed transaction [[go]](#Send-signed-transaction)
 * [TRON](#CYBABO-TRON-API-Sample)
 * [Litecoin](#CYBABO-Litecoin-API-Sample)
 
@@ -20,11 +20,11 @@
 	- API secret
 ---------------------------------------
 # CYBABO EOS API Sample
-### Account
 
-#### Query basic information of the specific account 
+####  Account information
+##### Query basic information of the specific account 
 - **GET** /v1/eos/account/`EOS_ACCOUNT_NAME`/info
-		- Response
+	- Response
 
 		``` json
 		{
@@ -64,9 +64,10 @@
 		}
 		```
 
-#### Query resource data of the specific account
+#### Resource information
+##### Query resource information of the specific account
 - **GET** /v1/eos/account/`EOS_ACCOUNT_NAME`/resouce
-	    - Response
+	  - Response
 
 		``` json
 		{
@@ -94,9 +95,10 @@
 		}
 		```
 
-#### Query balance of the specific account
+#### Balance information
+##### Query balance of the specific account
 - **GET** /v1/eos/account/`EOS_ACCOUNT_NAME`/balance
-		- Response
+	- Response
 
 		``` json
 		{
@@ -107,10 +109,10 @@
 		}
 		```
 
-### Block
-#### Query detailed information of transactions in the specific block and block height
+#### Transactions information
+##### Query detailed information of transactions in the specific block and block height
 - **GET** /v1/eos/block/`BLOCK_NUM`
-		- Response
+	- Response
 
 		``` json
 		{
@@ -186,9 +188,10 @@
 		}
 		```
 
-#### Query detailed information of transactions in the latest block and block height
+#### Transactions information in the latest block
+##### Query detailed information of transactions in the latest block and block height
 - **GET** /v1/eos/block/latest
-		- Response
+	- Response
 
 		``` json
 		{
@@ -339,9 +342,10 @@
 		}
 		```
 
-#### Query detailed information of transactions in the latest irreversible block and block height
+#### Transactions information in the latest irreversible block
+##### Query detailed information of transactions in the latest irreversible block and block height
 - **GET** /v1/eos/block/latest\_irreversible
-		- Response
+	- Response
 
 		``` json
 		{
@@ -365,9 +369,11 @@
 		  }
 		}
 		```
-#### Convert json to binary
+
+#### Convert
+##### Convert json to binary
 - **POST** /v1/eos/abi\_json\_to\_bin
-		- Request
+	- Request
 		
 		``` json
 		{
@@ -392,10 +398,11 @@
 		  }
 		}
 		```
-		
-#### Receive the signed JSON transaction and broadcast it to blockchain
+
+#### Send signed transaction
+##### Receive the signed JSON transaction and broadcast it to blockchain
 - **POST** /v1/eos/transaction/send
-		-  Request
+	- Request
 
 		``` json
 		{
@@ -565,6 +572,7 @@
 		  }
 		}
 		```
+		
 ---------------------------------------
 # CYBABO TRON API Sample
 ### Get Account
