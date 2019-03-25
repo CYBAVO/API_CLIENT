@@ -1,4 +1,4 @@
-# CYBABO Ledger Service
+# CYBAVO Ledger Service
 ## Supportted Currencies
 * [EOS](#CYBABO-EOS-API-Sample)
   * Account information [[go]](#Account-information) 
