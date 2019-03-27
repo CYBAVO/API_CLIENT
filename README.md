@@ -26,28 +26,28 @@
 	* Trigger Smart Contract [[go]](#Trigger-Smart-Contract)
 
 * [Litecoin](#CYBAVO-Litecoin-API-Sample)
-	* Transaction fee [[go]](#Transaction-fee-(LTC))
-	* Get address balance [[go]](#Get-address-balance-(LTC))
-	* Get confirmation of TXID [[go]](#Get-confirmation-of-TXID-(LTC))
-	* Get unconfirmed balance [[go]](#Get-unconfirmed-balance-(LTC))
-	* Create raw transaction [[go]](#Create-raw-transaction-(LTC))
-	* Broadcast signed transaction [[go]](#Broadcast-signed-transaction-(LTC))
-	* Get UTXO in address [[go]](#Broadcast-signed-transaction-(LTC))
-	* Get transaction history in address [[go]](#Get-transaction-history-in-address-(LTC))
-	* Get transaction information [[go]](#Get-transaction-information-(LTC))
-	* Get batch of address balance [[go]](#Get-batch-of-address-balance-(LTC))
+	* Transaction fee [[go]](#Transaction-fee-[LTC])
+	* Get address balance [[go]](#Get-address-balance-[LTC])
+	* Get confirmation of TXID [[go]](#Get-confirmation-of-TXID-[LTC])
+	* Get unconfirmed balance [[go]](#Get-unconfirmed-balance-[LTC])
+	* Create raw transaction [[go]](#Create-raw-transaction-[LTC])
+	* Broadcast signed transaction [[go]](#Broadcast-signed-transaction-[LTC])
+	* Get UTXO in address [[go]](#Broadcast-signed-transaction-[LTC])
+	* Get transaction history in address [[go]](#Get-transaction-history-in-address-[LTC])
+	* Get transaction information [[go]](#Get-transaction-information-[LTC])
+	* Get batch of address balance [[go]](#Get-batch-of-address-balance-[LTC])
 
 * [Bitcoin](#CYBAVO-Bitcoin-API-Sample)
-	* Transaction fee [[go]](#Transaction-fee-(BTC))
-	* Get address balance [[go]](#Get-address-balance-(BTC))
-	* Get confirmation of TXID [[go]](#Get-confirmation-of-TXID-(BTC))
-	* Get unconfirmed balance [[go]](#Get-unconfirmed-balance-(BTC))
-	* Create raw transaction [[go]](#Create-raw-transaction-(BTC))
-	* Broadcast signed transaction [[go]](#Broadcast-signed-transaction-(BTC))
-	* Get UTXO in address [[go]](#Broadcast-signed-transaction-(BTC))
-	* Get transaction history in address [[go]](#Get-transaction-history-in-address-(BTC))
-	* Get transaction information [[go]](#Get-transaction-information-(BTC))
-	* Get block information [[go]](#Get-block-information-(BTC))
+	* Transaction fee [[go]](#Transaction-fee-[BTC])
+	* Get address balance [[go]](#Get-address-balance-[BTC])
+	* Get confirmation of TXID [[go]](#Get-confirmation-of-TXID-[BTC])
+	* Get unconfirmed balance [[go]](#Get-unconfirmed-balance-[BTC])
+	* Create raw transaction [[go]](#Create-raw-transaction-[BTC])
+	* Broadcast signed transaction [[go]](#Broadcast-signed-transaction-[BTC])
+	* Get UTXO in address [[go]](#Broadcast-signed-transaction-[BTC])
+	* Get transaction history in address [[go]](#Get-transaction-history-in-address-[BTC])
+	* Get transaction information [[go]](#Get-transaction-information-[BTC])
+	* Get block information [[go]](#Get-block-information-[BTC])
 
 ## Prerequisite
 
@@ -1301,7 +1301,7 @@
 ---------------------------------------
 # CYBAVO Litecoin API Sample
 
-### Transaction Fee (LTC)
+### Transaction Fee [LTC]
 - Query transaction fee
 	- **GET** /v1/ltc/wallet/fee
 		- Response
@@ -1318,7 +1318,7 @@
 		}
 		```
 
-### Get address balance (LTC)
+### Get address balance [LTC]
 - Query balance in specific address
 	- **GET** /v1/ltc/wallet/addressbalance/`LTC_ADDRESS`
 		- Response
@@ -1332,7 +1332,7 @@
 		}
 		```
 
-### Get confirmation of TXID (LTC)
+### Get confirmation of TXID [LTC]
 - Query confirmation number in specific txid
 	- **GET**  /v1/ltc/transaction/confirm/`LTC_TXID`
 		- Response
@@ -1346,7 +1346,7 @@
 		}
 		```
 
-### Get unconfirmed balance (LTC)
+### Get unconfirmed balance [LTC]
 - Query unconfirmed balance in specific address
 	- **GET**  /v1/ltc/transaction/addressunconfirmbalance/`LTC_ADDRESS`
 		- Response
@@ -1360,7 +1360,7 @@
 		}
 		```
 
-### Create raw transaction (LTC)
+### Create raw transaction [LTC]
 - Create transaction information. Server selects eligible UTXO and returns encoding string of transaction
 	- **POST**  /v1/ltc/transaction/createpayment
 		- Request
@@ -1386,7 +1386,7 @@
 		}
 		```
 
-### Send signed transaction (LTC)
+### Send signed transaction [LTC]
 - Send signed transaction to blockchain
 	- **POST**  /v1/ltc/transaction/submitpayment
 		- Request
@@ -1409,7 +1409,7 @@
 		}
 		```
 
-### Get UTXO in address (LTC)
+### Get UTXO in address [LTC]
 - Query UTXO in specific address
 	- **GET**  /v1/ltc/transaction/addressutxo/`LTC_ADDRESS`
 		- Response
@@ -1462,7 +1462,7 @@
 		}
 		```
 
-### Get transaction history in address (LTC)
+### Get transaction history in address [LTC]
 - Query transaction history in address by specific number
 	- **GET**  /v1/ltc/wallet/addresshistory/`LTC_ADDRESS`/`NUMBER`
 		- Response
@@ -1492,7 +1492,7 @@
 		}
 		```
 
-### Get transaction information (LTC)
+### Get transaction information [LTC]
 - Query transaction information in specific TXID and address
 	- **GET**  /v1/ltc/transaction/txinfo/`LTC_TXID`/`ADDRESS`
 		- Response
@@ -1514,7 +1514,7 @@
 		}
 		```
 
-### Get batch of address balance (LTC)
+### Get batch of address balance [LTC]
 - Query batch of address balance
 	- **POST**  /v1/ltc/wallet/addressbalance
 		- Request
@@ -1555,7 +1555,7 @@
 ---------------------------------------
 # CYBAVO Bitcoin API Sample
 
-### Transaction Fee (BTC)
+### Transaction Fee [BTC]
 - Query transaction fee
 	- **GET** /v1/btc/wallet/fee
 		- Response
@@ -1572,7 +1572,7 @@
 		}
 		```
 
-### Get address balance (BTC)
+### Get address balance [BTC]
 - Query balance in specific address
 	- **GET** /v1/btc/wallet/addressbalance/`LTC_ADDRESS`
 		- Response
@@ -1586,7 +1586,7 @@
 		}
 		```
 
-### Get confirmation of TXID (BTC)
+### Get confirmation of TXID [BTC]
 - Query confirmation number in specific txid
 	- **GET**  /v1/btc/transaction/confirm/`LTC_TXID`
 		- Response
@@ -1600,7 +1600,7 @@
 		}
 		```
 
-### Get unconfirmed balance (BTC)
+### Get unconfirmed balance [BTC]
 - Query unconfirmed balance in specific address
 	- **GET**  /v1/btc/transaction/addressunconfirmbalance/`LTC_ADDRESS`
 		- Response
@@ -1614,7 +1614,7 @@
 		}
 		```
 
-### Create raw transaction (BTC)
+### Create raw transaction [BTC]
 - Create transaction information. Server selects eligible UTXO and returns encoding string of transaction
 	- **POST**  /v1/btc/transaction/createpayment
 		- Request
@@ -1640,7 +1640,7 @@
 		}
 		```
 
-### Send signed transaction (BTC)
+### Send signed transaction [BTC]
 - Send signed transaction to blockchain
 	- **POST**  /v1/btc/transaction/submitpayment
 		- Request
@@ -1663,7 +1663,7 @@
 		}
 		```
 
-### Get UTXO in address (BTC)
+### Get UTXO in address [BTC]
 - Query UTXO in specific address
 	- **GET**  /v1/btc/transaction/addressutxo/`LTC_ADDRESS`
 		- Response
@@ -1716,7 +1716,7 @@
 		}
 		```
 
-### Get transaction history in address (BTC)
+### Get transaction history in address [BTC]
 - Query transaction history in address by specific number
 	- **GET**  /v1/btc/wallet/addresshistory/`LTC_ADDRESS`/`NUMBER`
 		- Response
@@ -1746,7 +1746,7 @@
 		}
 		```
 
-### Get transaction information (BTC)
+### Get transaction information [BTC]
 - Query transaction information in specific TXID and address
 	- **GET**  /v1/btc/transaction/txinfo/`LTC_TXID`/`ADDRESS`
 		- Response
@@ -1768,7 +1768,7 @@
 		}
 		```
 
-### Get block information (BTC)
+### Get block information [BTC]
 - Query block information in specific block number
 	- **GET**  /v1/btc/block/blockinfo/`BTC_BLOCK_NUMBER`
 		- Response
