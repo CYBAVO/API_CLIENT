@@ -1515,7 +1515,7 @@
 		```
 
 ### LTC - Get batch of address balance 
-- Query batch of address balance
+- Query batch of address balance. The maximum number of address is 20
 	- **POST**  /v1/ltc/wallet/addressbalance
 		- Request
 		``` json
