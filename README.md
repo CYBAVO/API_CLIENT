@@ -26,7 +26,7 @@
 	* Trigger Smart Contract [[go]](#Trigger-Smart-Contract)
 
 * [Litecoin](#CYBAVO-Litecoin-API-Sample)
-	* Transaction fee [[go]](#LTC-Transaction-fee)
+	* Transaction fee [[go]](#LTC---Transaction-fee)
 	* Get address balance [[go]](#LTC-Get-address-balance)
 	* Get confirmation of TXID [[go]](#LTC-Get-confirmation-of-TXID)
 	* Get unconfirmed balance [[go]](#LTC-Get-unconfirmed-balance)
@@ -1301,7 +1301,7 @@
 ---------------------------------------
 # CYBAVO Litecoin API Sample
 
-### LTC Transaction Fee 
+### LTC - Transaction Fee 
 - Query transaction fee
 	- **GET** /v1/ltc/wallet/fee
 		- Response
