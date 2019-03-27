@@ -35,6 +35,7 @@
 	* Get UTXO in address [[go]](#Broadcast-signed-transaction-(LTC))
 	* Get transaction history in address [[go]](#Get-transaction-history-in-address-(LTC))
 	* Get transaction information [[go]](#Get-transaction-information-(LTC))
+	* Get batch of address balance [[go]](#Get-batch-of-address-balance-(LTC))
 
 * [Bitcoin](#CYBAVO-Bitcoin-API-Sample)
 	* Transaction fee [[go]](#Transaction-fee-(BTC))
@@ -1509,6 +1510,44 @@
     	"out": true,
     	"token": "",
     	"status": 1
+  		}
+		}
+		```
+
+### Get batch of address balance (LTC)
+- Query batch of address balance
+	- **POST**  /v1/ltc/wallet/addressbalance
+		- Request
+		``` json
+		{
+  		"Addresses": [
+    		{
+      		"Address": "QcYTcwUNkKu4e6BJWZTYeT6NR16Z9C72FT"
+    		},
+    		{
+      		"Address": "QaAqKiTwm5qpYyjuSLRXhuAHtpBuWn6vFU"
+    		}
+  		]
+		}
+		```
+		- Response
+
+		``` json
+		{
+  		"error_code": 0,
+  		"result": {
+    		"Balances": [
+      		{
+        		"Address": "QcYTcwUNkKu4e6BJWZTYeT6NR16Z9C72FT",
+        		"Token": "",
+        		"Balance": "4.99715"
+      		},
+      		{
+        		"Address": "QaAqKiTwm5qpYyjuSLRXhuAHtpBuWn6vFU",
+        		"Token": "",
+        		"Balance": "159472.49358268"
+      		}
+    		]
   		}
 		}
 		```

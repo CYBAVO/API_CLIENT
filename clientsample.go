@@ -300,3 +300,10 @@ func exampleGetTxInfo(txid string, address string) {
 	log.Println("response =", string(resp))
 	log.Println("error =", err)
 }
+
+func exampleGetBatchAddressBalance() {
+	request := `{"Addresses":[{"Address":"QcYTcwUNkKu4e6BJWZTYeT6NR16Z9C72FT","Token":""},{"Address":"QaAqKiTwm5qpYyjuSLRXhuAHtpBuWn6vFU","Token":""}]}`
+
+	resp, err := makeRequest("POST", "/v1/ltc/wallet/addressbalance", nil, &request)
+	printResult(resp, err)
+}
