@@ -307,3 +307,21 @@ func exampleGetBatchAddressBalance() {
 	resp, err := makeRequest("POST", "/v1/ltc/wallet/addressbalance", nil, &request)
 	printResult(resp, err)
 }
+
+func exampleXPubGetBalance(xpub string) {
+	url := fmt.Sprintf("/v1/ltc/wallet/xpubbalance/%s", xpub)
+
+	params := []string{}
+	params = append(params, fmt.Sprintf("xpub=%s", xpub))
+	resp, err := makeRequest("GET", url, params, nil)
+
+	log.Println("response =", string(resp))
+	log.Println("error =", err)
+}
+
+func exampleXPubPushTransaction() {
+	request := `{"ToAddress":"QcYTcwUNkKu4e6BJWZTYeT6NR16Z9C72FT","Amount":"0.0001","Fee":"0.0000416","XPub":"tpubDH9DBHzyDeLhoXWfyaaWFjiDRXsYguxZHKmbqTXqRMsHyt21jA1cXhMCjuBvFo2Q6PzY4UwRS1zArQH1aaKADdASW3vyZWwvRSF9vVLvmrL","ReceivingAddress":"mkJ6dFu4pzohktR8rwH8q1eK3qs8BTsBsY"}`
+
+	resp, err := makeRequest("POST", "/v1/ltc/transaction/xpubcreatepayment", nil, &request)
+	printResult(resp, err)
+}

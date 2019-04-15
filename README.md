@@ -1552,6 +1552,60 @@
 		}
 		```
 
+### LTC - Get balance list of XPub
+- Query balance list of XPub
+	- **GET**  /v1/ltc/wallet/xpubbalance
+		- Response
+
+		``` json
+		{
+  		"error_code": 0,
+  		"result": {
+    		"Balances": [
+      		{
+        		"Address": "n15ebjhpvs9Xr2H7R6WDdfBeAx7kEdi9CH",
+        		"Token": "",
+        		"Balance": "1.0004"
+      		},
+      		{
+        		"Address": "mkJ6dFu4pzohktR8rwH8q1eK3qs8BTsBsY",
+        		"Token": "",
+        		"Balance": "4.9949"
+      		}
+    		]
+  		}
+		}
+		```
+
+### LTC - Create transaction blob with XPub
+- Create transaction blob with XPub. UTXOs in this blob include all addresses which created by this XPub. Request must specify next address (ReceivingAddress) of XPub.
+	- **POST**  /v1/ltc/transaction/xpubcreatepayment
+		- Request
+
+		``` json
+		{
+  		"Type": 0,
+  		"ToAddress": "QcYTcwUNkKu4e6BJWZTYeT6NR16Z9C72FT",
+  		"Amount": "0.0001",
+  		"Fee": "0.0000416",
+  		"XPub": "tpubDH9DBHzyDeLhoXWfyaaWFjiDRXsYguxZHKmbqTXqRMsHyt21jA1cXhMCjuBvFo2Q6PzY4UwRS1zArQH1aaKADdASW3vyZWwvRSF9vVLvmrL",
+  		"ReceivingAddress": "mkJ6dFu4pzohktR8rwH8q1eK3qs8BTsBsY"
+		}
+		```
+		
+		- Response
+
+		``` json
+		{
+  		"error_code": 0,
+  		"result": {
+    		"TransactionHash": "7b227261777478223a22303130303030303030316465333064343633633562353132363830643835613366323331306563623363326263313865623264346664623664636334643863346430366562303936363230313030303030303030666666666666666630323130323730303030303030303030303031376139313461656437353035326439656361663061323536326161656538656530343464666332626237356264383733383632633531643030303030303030313937366139313433343661326430353836373736383730336531363633643161633364303833366634343730666338383861633030303030303030222c22696e707574616d6f756e74223a5b7b2261646472657373223a226d6b4a3664467534707a6f686b745238727748387131654b33717338425473427359222c22616d6f756e74223a3439393439303030307d5d7d",
+    		"Fee": "5e-05"
+  		}
+		}
+		```
+
+
 ---------------------------------------
 # CYBAVO Bitcoin API Sample
 
