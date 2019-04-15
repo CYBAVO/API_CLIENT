@@ -36,6 +36,8 @@
 	* Get transaction history in address [[go]](#LTC---Get-transaction-history-in-address)
 	* Get transaction information [[go]](#LTC---Get-transaction-information)
 	* Get batch of address balance [[go]](#LTC---Get-batch-of-address-balance)
+	* Get balance list of XPub [[go]](#LTC---Get-balance-list-of-XPub)
+	* Create transaction blob with XPub [[go]](#LTC---Create-transaction-blob-with-XPub)
 
 * [Bitcoin](#CYBAVO-Bitcoin-API-Sample)
 	* Transaction fee [[go]](#BTC---Transaction-fee)
@@ -1554,7 +1556,7 @@
 
 ### LTC - Get balance list of XPub
 - Query balance list of XPub
-	- **GET**  /v1/ltc/wallet/xpubbalance
+	- **GET**  /v1/ltc/wallet/xpubbalance/`LTC_XPUB`
 		- Response
 
 		``` json
@@ -1592,7 +1594,7 @@
   		"ReceivingAddress": "mkJ6dFu4pzohktR8rwH8q1eK3qs8BTsBsY"
 		}
 		```
-		
+
 		- Response
 
 		``` json
