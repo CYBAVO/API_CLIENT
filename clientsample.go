@@ -26,7 +26,8 @@ func main() {
 	exampleGetAccount("cybavotest12", "resource")
 	exampleGetAccount("cybavotest12", "balance")
 	exampleABIJsonToBin()
-	examplePostTransaction()
+	examplePostPackedTransaction()
+	examplePostRawTransaction()
 
 	// TRON
 	exampleTronGetAccountNet()
@@ -87,10 +88,21 @@ func exampleABIJsonToBin() {
 	log.Println("error =", err)
 }
 
-func examplePostTransaction() {
+func examplePostPackedTransaction() {
 	transaction := `{"signatures":["SIG_K1_K4gsBzrZ5dTPrK2dv1bvwttcA7aTuFFyi4X43NDPPxExLvnDxGFpkHx8tmte22sEMKgopcBYT7dvoZgVJ7HFpyQJsrZDuo"],"compression":"none","packed_context_free_data":"","packed_trx":"897ef15ba927136993dd000000000100a6823403ea3055000000572d3ccdcd0190dd39e69a64a64100000000a8ed32322190dd39e69a64a641e05b3597d15cfd45640000000000000004454f530000000000000000000000000000000000000000000000000000000000000000000000000000"}`
 
-	res, err := makeRequest("POST", "/v1/eos/transaction/send", nil, &transaction)
+	params := []string{"fmt=packed"}
+	res, err := makeRequest("POST", "/v1/eos/transaction/send", params, &transaction)
+
+	log.Println("response =", string(res))
+	log.Println("error =", err)
+}
+
+func examplePostRawTransaction() {
+	transaction := `{"expiration":"2019-04-17T00:00:00","ref_block_num":64484,"ref_block_prefix":2668208063,"max_net_usage_words":0,"max_cpu_usage_ms":0,"delay_sec":0,"context_free_actions":[],"actions":[{"account":"eosio.token","name":"transfer","authorization":[{"actor":"cybovatest11","permission":"active"}],"data":"00afa998aaabaac6a0986aff4b9a3c61102700000000000004454f5300000000057465737431"}],"transaction_extensions":[],"signatures":["SIG_K1_K3p94niNvkxzpMYezEzetcoFTEyowgVaX95p5K8xqEdyP2pFkcvqeVXbyMZMBWBDe73G5Dv92SLyTBxaj5yNnStALET326"],"context_free_data":[]}`
+
+	params := []string{"fmt=raw"}
+	res, err := makeRequest("POST", "/v1/eos/transaction/send", params, &transaction)
 
 	log.Println("response =", string(res))
 	log.Println("error =", err)

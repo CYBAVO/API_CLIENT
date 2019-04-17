@@ -8,7 +8,7 @@
   * Transactions information in latest block [[go]](#Transactions-information-in-latest-block)
   * Transactions information in the latest irreversible block [[go]](#Transactions-information-in-the-latest-irreversible-block)
   * Convert json to binary [[go]](#Convert-json-to-binary)
-  * Send signed transaction [[go]](#Send-signed-transaction)
+  * Broadcast signed transaction [[go]](#Broadcast-signed-transaction)
 
 * [TRON](#CYBAVO-TRON-API-Sample)
 	* Get Account Information [[go]](#Get-Account-Information)
@@ -440,7 +440,7 @@
 
 #### Broadcast signed transaction
 - Receive the signed JSON transaction and broadcast it to blockchain
-	- **POST** /v1/eos/transaction/send
+	- **POST** /v1/eos/transaction/send?fmt=packed
 		- Request
 
 		``` json
@@ -609,6 +609,38 @@
 		      "except": null
 		    }
 		  }
+		}
+		```
+	- **POST** /v1/eos/transaction/send?fmt=raw
+		- Request
+
+		``` json
+		{
+		  "expiration": "2019-04-17T00:00:00",
+		  "ref_block_num": 64484,
+		  "ref_block_prefix": 2668208063,
+		  "max_net_usage_words": 0,
+		  "max_cpu_usage_ms": 0,
+		  "delay_sec": 0,
+		  "context_free_actions": [],
+		  "actions": [
+		    {
+		      "account": "eosio.token",
+		      "name": "transfer",
+		      "authorization": [
+		        {
+		          "actor": "cybovatest11",
+		          "permission": "active"
+		        }
+		      ],
+		      "data": "00afa998aaabaac6a0986aff4b9a3c61102700000000000004454f5300000000057465737431"
+		    }
+		  ],
+		  "transaction_extensions": [],
+		  "signatures": [
+		    "SIG_K1_K3p94niNvkxzpMYezEzetcoFTEyowgVaX95p5K8xqEdyP2pFkcvqeVXbyMZMBWBDe73G5Dv92SLyTBxaj5yNnStALET326"
+		  ],
+		  "context_free_data": []
 		}
 		```
 

@@ -45,7 +45,9 @@ func makeRequest(method string, api string, params []string, postBody *string) (
 	client := &http.Client{}
 	t := time.Now().Unix()
 	url := fmt.Sprintf("%s%s?ac=%s&t=%d", baseURL, api, myAPICode, t)
-
+	if len(params) > 0 {
+		url += fmt.Sprintf("&%s", strings.Join(params, "&"))
+	}
 	var req *http.Request
 	var err error
 	if postBody == nil {
