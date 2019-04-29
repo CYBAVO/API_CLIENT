@@ -28,6 +28,7 @@ func main() {
 	exampleABIJsonToBin()
 	examplePostPackedTransaction()
 	examplePostRawTransaction()
+	exampleGetInfo()
 
 	// TRON
 	exampleTronGetAccountNet()
@@ -105,6 +106,13 @@ func examplePostRawTransaction() {
 	res, err := makeRequest("POST", "/v1/eos/transaction/send", params, &transaction)
 
 	log.Println("response =", string(res))
+	log.Println("error =", err)
+}
+
+func exampleGetInfo() {
+	resp, err := makeRequest("GET", "/v1/eos/get_info", nil, nil)
+
+	log.Println("response =", string(resp))
 	log.Println("error =", err)
 }
 

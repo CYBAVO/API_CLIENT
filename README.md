@@ -1,6 +1,7 @@
 # CYBAVO Ledger Service
 ## Supportted Currencies
 * [EOS](#CYBAVO-EOS-API-Sample)
+  * Basic information [[go]](#Basic-information) 
   * Account information [[go]](#Account-information) 
   * Resource information [[go]](#Resource-information)
   * Balance information [[go]](#Balance-information)
@@ -57,10 +58,36 @@
 	- API URL 
 	- API code
 	- API secret
+
 ---------------------------------------
 # CYBAVO EOS API Sample
 
 ####  Account information
+- Query basic information
+	- **GET** /v1/eos/get_info
+		- Response
+
+		``` json
+		{
+		  "error_code": 0,
+		  "result": {
+		    "server_version": "2162999e",
+		    "chain_id": "e70aaab8997e1dfce58fbfac80cbbb8fecec7b99cf982a9444273cbc64c41473",
+		    "head_block_num": 25312519,
+		    "last_irreversible_block_num": 25312188,
+		    "last_irreversible_block_id": "01823bbca04d7c1eb7cb59afed326babd9815a9f2c12b02317bd8d27b237663f",
+		    "head_block_id": "01823d07118e4fa3036b529cb0d170bea7cb3e3775d27ca659a6384a4179d924",
+		    "head_block_time": "2019-04-24T22:47:16",
+		    "head_block_producer": "ohtigertiger",
+		    "virtual_block_cpu_limit": 200000000,
+		    "virtual_block_net_limit": 524288000,
+		    "block_cpu_limit": 199900,
+		    "block_net_limit": 524288,
+		    "server_version_string": "jenkins-fullnode_eos-9"
+		  }
+		}
+		```
+
 - Query basic information of the specific account 
 	- **GET** /v1/eos/account/`EOS_ACCOUNT_NAME`/info
 		- Response
