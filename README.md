@@ -3,7 +3,6 @@
 * [EOS](#CYBAVO-EOS-API-Sample)
   * Basic information [[go]](#Basic-information) 
   * Account information [[go]](#Account-information) 
-  * Resource information [[go]](#Resource-information)
   * Balance information [[go]](#Balance-information)
   * Transactions information [[go]](#Transactions-information)
   * Transactions information in latest block [[go]](#Transactions-information-in-latest-block)
@@ -64,7 +63,7 @@
 
 ####  Account information
 - Query basic information
-	- **GET** /v1/eos/get_info
+	- **POST** /v1/eos/chain/get_info
 		- Response
 
 		``` json
@@ -88,8 +87,16 @@
 		}
 		```
 
-- Query basic information of the specific account 
-	- **GET** /v1/eos/account/`EOS_ACCOUNT_NAME`/info
+- Query information of the specific account 
+	- **POST** /v1/eos/chain/get_account
+		- Request
+		
+		``` json
+		{
+		  "account_name": "cybavotest12"
+		}
+		```
+		
 		- Response
 
 		``` json
@@ -97,65 +104,73 @@
 		  "error_code": 0,
 		  "result": {
 		    "account_name": "cybavotest12",
+		    "privileged": false,
+		    "last_code_update": "1970-01-01T00:00:00",
 		    "created": "2018-11-26T03:27:40",
+		    "core_liquid_balance": "2.3500 EOS",
+		    "ram_quota": 5467,
+		    "ram_usage": 3446,
+		    "net_weight": 1000,
+		    "cpu_weight": 1000,
+		    "net_limit": {
+		      "used": 0,
+		      "available": 13607,
+		      "max": 13607
+		    },
+		    "cpu_limit": {
+		      "used": 0,
+		      "available": 4832,
+		      "max": 4832
+		    },
 		    "permissions": [
 		      {
-		        "parent": "owner",
 		        "perm_name": "active",
+		        "parent": "owner",
 		        "required_auth": {
+		          "threshold": 1,
 		          "keys": [
 		            {
 		              "key": "EOS7fbBtWWoFot3Q4bBDfQ1dy8Ty6ddZBvxrPcTsuqYdrCnFRj9k2",
 		              "weight": 1
 		            }
-		          ],
-		          "threshold": 1
+		          ]
 		        }
 		      },
 		      {
-		        "parent": "",
 		        "perm_name": "owner",
+		        "parent": "",
 		        "required_auth": {
+		          "threshold": 1,
 		          "keys": [
 		            {
 		              "key": "EOS7fbBtWWoFot3Q4bBDfQ1dy8Ty6ddZBvxrPcTsuqYdrCnFRj9k2",
 		              "weight": 1
 		            }
-		          ],
-		          "threshold": 1
+		          ]
 		        }
 		      }
-		    ]
-		  }
-		}
-		```
-
-#### Resource information
-- Query resource information of the specific account
-	- **GET** /v1/eos/account/`EOS_ACCOUNT_NAME`/resouce
-	  - Response
-
-		``` json
-		{
-		  "error_code": 0,
-		  "result": {
-		    "cpu_limit": {
-		      "available": 4870,
-		      "max": 4870,
-		      "used": 0
-		    },
-		    "net_limit": {
-		      "available": 27298,
-		      "max": 27298,
-		      "used": 0
-		    },
-		    "ram_quota": 5467,
-		    "ram_usage": 3446,
+		    ],
 		    "total_resources": {
-		      "cpu_weight": "0.1000 EOS",
-		      "net_weight": "0.1000 EOS",
 		      "owner": "cybavotest12",
+		      "net_weight": "0.1000 EOS",
+		      "cpu_weight": "0.1000 EOS",
 		      "ram_bytes": 4067
+		    },
+		    "self_delegated_bandwidth": {
+		      "from": "cybavotest12",
+		      "to": "cybavotest12",
+		      "net_weight": "0.1000 EOS",
+		      "cpu_weight": "0.1000 EOS"
+		    },
+		    "refund_request": null,
+		    "voter_info": {
+		      "owner": "cybavotest12",
+		      "proxy": "",
+		      "producers": [],
+		      "staked": 2000,
+		      "last_vote_weight": 0,
+		      "proxied_vote_weight": 0,
+		      "is_proxy": 0
 		    }
 		  }
 		}
@@ -163,7 +178,17 @@
 
 #### Balance information
 - Query balance of the specific account
-	- **GET** /v1/eos/account/`EOS_ACCOUNT_NAME`/balance
+	- **POST** /v1/eos/chain/get_currency_balance
+		- Request
+
+		``` json
+		{
+		  "code": "eosio.token",
+		  "account": "cybavotest12",
+		  "symbol": "EOS"
+		}
+		```
+
 		- Response
 
 		``` json
@@ -177,7 +202,15 @@
 
 #### Transactions information
 - Query detailed information of transactions in the specific block and block height
-	- **GET** /v1/eos/block/`BLOCK_NUM`
+	- **POST** /v1/eos/chain/get_block
+		- Request
+
+		``` json
+		{
+		  "block_num_or_id": "2354428"
+		}
+		```
+		
 		- Response
 
 		``` json
@@ -256,7 +289,15 @@
 
 #### Transactions information in the latest block
 - Query detailed information of transactions in the latest block and block height
-	- **GET** /v1/eos/block/latest
+	- **POST** /v1/eos/chain/get_block
+		- Request
+
+		``` json
+		{
+		  "block_num_or_id": "latest"
+		}
+		```
+
 		- Response
 
 		``` json
@@ -410,7 +451,15 @@
 
 #### Transactions information in the latest irreversible block
 - Query detailed information of transactions in the latest irreversible block and block height
-	- **GET** /v1/eos/block/latest\_irreversible
+	- **POST** /v1/eos/chain/get_block
+		- Request
+
+		``` json
+		{
+		  "block_num_or_id": "latest_irreversible"
+		}
+		```
+
 		- Response
 
 		``` json
@@ -438,7 +487,7 @@
 
 #### Convert json to binary
 - Convert json to binary
-	- **POST** /v1/eos/abi\_json\_to\_bin
+	- **POST** /v1/eos/chain/abi\_json\_to\_bin
 		- Request
 		
 		``` json
@@ -467,7 +516,7 @@
 
 #### Broadcast signed transaction
 - Receive the signed JSON transaction and broadcast it to blockchain
-	- **POST** /v1/eos/transaction/send?fmt=packed
+	- **POST** /v1/eos/chain/push_transaction?fmt=packed
 		- Request
 
 		``` json
@@ -638,7 +687,7 @@
 		  }
 		}
 		```
-	- **POST** /v1/eos/transaction/send?fmt=raw
+	- **POST** /v1/eos/chain/push_transaction?fmt=raw
 		- Request
 
 		``` json

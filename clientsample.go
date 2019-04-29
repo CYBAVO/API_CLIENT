@@ -19,12 +19,11 @@ import (
 func main() {
 	// EOS
 	exampleGetHealth()
-	exampleGetBlock("2354428")
-	exampleGetBlock("latest")
-	exampleGetBlock("latest_irreversible")
-	exampleGetAccount("cybavotest12", "info")
-	exampleGetAccount("cybavotest12", "resource")
-	exampleGetAccount("cybavotest12", "balance")
+	exampleGetBlock()
+	exampleGetBlockLatest()
+	exampleGetBlockLatestIrreversible()
+	exampleGetAccount()
+	exampleGetCurrencyBalance()
 	exampleABIJsonToBin()
 	examplePostPackedTransaction()
 	examplePostRawTransaction()
@@ -58,23 +57,41 @@ func exampleGetHealth() {
 	log.Println("error =", err)
 }
 
-func exampleGetBlock(res string) {
-	url := fmt.Sprintf("/v1/eos/block/%s", res)
-
-	params := []string{}
-	params = append(params, fmt.Sprintf("block=%s", res))
-	resp, err := makeRequest("GET", url, params, nil)
+func exampleGetBlock() {
+	json := `{"block_num_or_id":"2354428"}`
+	resp, err := makeRequest("POST", "/v1/eos/chain/get_block", nil, &json)
 
 	log.Println("response =", string(resp))
 	log.Println("error =", err)
 }
 
-func exampleGetAccount(account string, res string) {
-	url := fmt.Sprintf("/v1/eos/account/%s/%s", account, res)
+func exampleGetBlockLatest() {
+	json := `{"block_num_or_id":"latest"}`
+	resp, err := makeRequest("POST", "/v1/eos/chain/get_block", nil, &json)
 
-	params := []string{}
-	params = append(params, fmt.Sprintf("account=%s", account))
-	resp, err := makeRequest("GET", url, params, nil)
+	log.Println("response =", string(resp))
+	log.Println("error =", err)
+}
+
+func exampleGetBlockLatestIrreversible() {
+	json := `{"block_num_or_id":"latest_irreversible"}`
+	resp, err := makeRequest("POST", "/v1/eos/chain/get_block", nil, &json)
+
+	log.Println("response =", string(resp))
+	log.Println("error =", err)
+}
+
+func exampleGetAccount() {
+	json := `{"account_name":"cybavotest12"}`
+	resp, err := makeRequest("POST", "/v1/eos/chain/get_account", nil, &json)
+
+	log.Println("response =", string(resp))
+	log.Println("error =", err)
+}
+
+func exampleGetCurrencyBalance() {
+	json := `{"code":"eosio.token","account":"cybavotest12","symbol":"EOS"}`
+	resp, err := makeRequest("POST", "/v1/eos/chain/get_currency_balance", nil, &json)
 
 	log.Println("response =", string(resp))
 	log.Println("error =", err)
@@ -83,7 +100,7 @@ func exampleGetAccount(account string, res string) {
 func exampleABIJsonToBin() {
 	json := `{"code":"eosio.token","action":"transfer","args":{"from":"cybovatest11","to":"cybovatest12","quantity":"1.0000 EOS","memo":"NOTE"}}`
 
-	res, err := makeRequest("POST", "/v1/eos/abi_json_to_bin", nil, &json)
+	res, err := makeRequest("POST", "/v1/eos/chain/abi_json_to_bin", nil, &json)
 
 	log.Println("response =", string(res))
 	log.Println("error =", err)
@@ -93,7 +110,7 @@ func examplePostPackedTransaction() {
 	transaction := `{"signatures":["SIG_K1_K4gsBzrZ5dTPrK2dv1bvwttcA7aTuFFyi4X43NDPPxExLvnDxGFpkHx8tmte22sEMKgopcBYT7dvoZgVJ7HFpyQJsrZDuo"],"compression":"none","packed_context_free_data":"","packed_trx":"897ef15ba927136993dd000000000100a6823403ea3055000000572d3ccdcd0190dd39e69a64a64100000000a8ed32322190dd39e69a64a641e05b3597d15cfd45640000000000000004454f530000000000000000000000000000000000000000000000000000000000000000000000000000"}`
 
 	params := []string{"fmt=packed"}
-	res, err := makeRequest("POST", "/v1/eos/transaction/send", params, &transaction)
+	res, err := makeRequest("POST", "/v1/eos/chain/push_transaction", params, &transaction)
 
 	log.Println("response =", string(res))
 	log.Println("error =", err)
@@ -103,14 +120,14 @@ func examplePostRawTransaction() {
 	transaction := `{"expiration":"2019-04-17T00:00:00","ref_block_num":64484,"ref_block_prefix":2668208063,"max_net_usage_words":0,"max_cpu_usage_ms":0,"delay_sec":0,"context_free_actions":[],"actions":[{"account":"eosio.token","name":"transfer","authorization":[{"actor":"cybovatest11","permission":"active"}],"data":"00afa998aaabaac6a0986aff4b9a3c61102700000000000004454f5300000000057465737431"}],"transaction_extensions":[],"signatures":["SIG_K1_K3p94niNvkxzpMYezEzetcoFTEyowgVaX95p5K8xqEdyP2pFkcvqeVXbyMZMBWBDe73G5Dv92SLyTBxaj5yNnStALET326"],"context_free_data":[]}`
 
 	params := []string{"fmt=raw"}
-	res, err := makeRequest("POST", "/v1/eos/transaction/send", params, &transaction)
+	res, err := makeRequest("POST", "/v1/eos/chain/push_transaction", params, &transaction)
 
 	log.Println("response =", string(res))
 	log.Println("error =", err)
 }
 
 func exampleGetInfo() {
-	resp, err := makeRequest("GET", "/v1/eos/get_info", nil, nil)
+	resp, err := makeRequest("POST", "/v1/eos/chain/get_info", nil, nil)
 
 	log.Println("response =", string(resp))
 	log.Println("error =", err)
