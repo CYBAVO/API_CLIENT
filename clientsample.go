@@ -43,6 +43,7 @@ func main() {
 	exampleTronGetTransactionByID()
 	exampleTronGetContract()
 	exampleTronTriggerSmartContact()
+	exampleTronCreateTransaction()
 }
 
 const baseURL = "API_URL"
@@ -242,6 +243,13 @@ func exampleTronTriggerSmartContact() {
 	request := `{"contract_address":"414B9223269E1C53B6B72745E3332623C21E70B805","function_selector":"balanceOf(address)","parameter":"000000000000000000000000C12FB0805F3BA3CA3A01D258A887DD3E4DB731A6","fee_limit":1000000,"call_value":0,"owner_address":"41C12FB0805F3BA3CA3A01D258A887DD3E4DB731A6"}`
 
 	resp, err := makeRequest("POST", "/v1/tron/wallet/triggersmartcontract", nil, &request)
+	printResult(resp, err)
+}
+
+func exampleTronCreateTransaction() {
+	request := `{"to_address": "412be614e143e40979efd18b47cfe089c2ba5906f1", "owner_address": "412a00fc3f6068ed005d3d00b30609ddb79c26e213", "amount": 1000 }`
+
+	resp, err := makeRequest("POST", "/v1/tron/wallet/createtransaction", nil, &request)
 	printResult(resp, err)
 }
 

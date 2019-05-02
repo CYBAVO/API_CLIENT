@@ -18,6 +18,7 @@
 	* Block by Latest Number [[go]](#Block-by-Latest-Number)
 	* Block by Limit Next [[go]](#Block-by-Limit-Next)
 	* Get Latest Block [[go]](#Get-Latest-Block)
+	* Create Transaction [[go]](#Create-Transaction)
 	* Broadcast Transaction [[go]](#Broadcast-Transaction)
 	* Validate Address [[go]](#Validate-Address)
 	* Transactions by ID [[go]](#Transactions-by-ID)
@@ -1123,6 +1124,47 @@
 		      "raw_data_hex": "0a02daf52208158dea1b61cd1cec40c09dcaff982d5a8e01081f1289010a31747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e54726967676572536d617274436f6e747261637412540a1541d19cd0057df24d00df8f4bd23fcdda1b9ad018dd121541fd896be2b82a224118266ad6f073ffdf13dba2382224bb1086c1000000000000000000000000000000000000000000000000000000000000000070e9d2c6ff982d90018094ebdc03"
 		    }
 		  ]
+		}
+		```
+		
+### Create Transaction
+- Create transaction.
+	-	**POST** /v1/tron/wallet/createtransaction	
+		- Request
+
+		``` json
+		{
+		  "to_address": "412be614e143e40979efd18b47cfe089c2ba5906f1",
+		  "owner_address": "412a00fc3f6068ed005d3d00b30609ddb79c26e213",
+		  "amount": 1000
+		}
+		```
+		
+		-	Response
+		
+		``` json
+		{
+		  "txID": "c3b99a927ee72b4ac8e35026bdf6388754314dc94550c4234bce9bac09f84ece",
+		  "raw_data": {
+		    "contract": [
+		      {
+		        "parameter": {
+		          "value": {
+		            "amount": 1000,
+		            "owner_address": "412a00fc3f6068ed005d3d00b30609ddb79c26e213",
+		            "to_address": "412be614e143e40979efd18b47cfe089c2ba5906f1"
+		          },
+		          "type_url": "type.googleapis.com/protocol.TransferContract"
+		        },
+		        "type": "TransferContract"
+		      }
+		    ],
+		    "ref_block_bytes": "aee5",
+		    "ref_block_hash": "750af90def8944f9",
+		    "expiration": 1556797638000,
+		    "timestamp": 1556797578683
+		  },
+		  "raw_data_hex": "0a02aee52208750af90def8944f940f08afbc2a72d5a66080112620a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412310a15412a00fc3f6068ed005d3d00b30609ddb79c26e2131215412be614e143e40979efd18b47cfe089c2ba5906f118e80770bbbbf7c2a72d"
 		}
 		```
 		
