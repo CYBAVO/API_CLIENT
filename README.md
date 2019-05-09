@@ -25,6 +25,8 @@
 	* Transaction Info by ID [[go]](#Transaction-Info-by-ID)
 	* Get Contract [[go]](#Get-Contract)
 	* Trigger Smart Contract [[go]](#Trigger-Smart-Contract)
+	* Block by Block Height (solidify) [[go]](#Block-by-Block-Height-(solidify))
+	* Get Latest Block (solidify) [[go]](#Get-Latest-Block-(solidify))
 
 * [Litecoin](#CYBAVO-Litecoin-API-Sample)
 	* Transaction fee [[go]](#LTC---Transaction-fee)
@@ -1450,6 +1452,29 @@
 		  }
 		}
 		```
+		
+### Block by Block Height (solidity)
+- Returns the Block Object corresponding to the 'Block Height' specified (number of blocks preceding it).
+	-	**POST** /v1/tron/walletsolidify/getblockbynum	
+		- Request
+
+		``` json
+		{
+		  "num": 200
+		}
+		```
+
+### Get Latest Block (solidity)
+-	Query the latest block synced to the Solidity Node.
+	-	**POST** /v1/tron/walletsolidify/getnowblock
+		-	Request
+
+		``` json
+		{
+		  "req": "nowblock"
+		}
+		```
+		
 ---------------------------------------
 # CYBAVO Litecoin API Sample
 
